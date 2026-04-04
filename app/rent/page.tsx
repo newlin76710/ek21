@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
 import FadeIn from '@/components/fade-in'
@@ -78,13 +77,10 @@ export default function RentPage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-sky/10 rounded-2xl blur-2xl" />
                 <div className="relative glass-card p-2">
-                  <Image
+                  <img
                     src="https://www.ek21.com/home/images/more-img-1.png"
                     alt="聊天室站長"
-                    width={540}
-                    height={400}
                     className="rounded-xl w-full object-cover"
-                    unoptimized
                   />
                 </div>
               </div>
@@ -107,12 +103,10 @@ export default function RentPage() {
               <FadeIn key={f.title} delay={i * 100}>
                 <div className="glass-card overflow-hidden group hover:border-dream/40 transition-all">
                   <div className="relative h-40 overflow-hidden">
-                    <Image
+                    <img
                       src={f.img}
                       alt={f.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      unoptimized
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-deep/80 to-transparent" />
                   </div>

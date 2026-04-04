@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
 
@@ -96,12 +95,10 @@ export default function NewsPage() {
           <div className="glass-card overflow-hidden mb-10 group cursor-pointer hover:border-dream/40 transition-all">
             <div className="grid grid-cols-1 sm:grid-cols-2">
               <div className="relative h-56 sm:h-auto overflow-hidden">
-                <Image
+                <img
                   src={ALL_ARTICLES[0].img}
                   alt={ALL_ARTICLES[0].title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  unoptimized
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="p-6 sm:p-8 flex flex-col justify-center">
@@ -146,12 +143,10 @@ export default function NewsPage() {
           {filtered.map(a => (
             <article key={a.title} className="glass-card overflow-hidden hover:border-dream/40 hover:shadow-glow transition-all group cursor-pointer">
               <div className="relative h-40 overflow-hidden">
-                <Image
+                <img
                   src={a.img}
                   alt={a.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  unoptimized
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-deep/60 to-transparent" />
               </div>

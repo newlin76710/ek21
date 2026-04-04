@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
 import FadeIn from '@/components/fade-in'
@@ -105,12 +104,10 @@ export default function AboutPage() {
               <Link href={b.link} className="glass-card overflow-hidden hover:border-dream/40 hover:shadow-glow transition-all block group">
                 <div className={`grid grid-cols-1 sm:grid-cols-3 ${i % 2 !== 0 ? 'sm:[direction:rtl]' : ''}`}>
                   <div className="relative h-48 sm:h-auto overflow-hidden">
-                    <Image
+                    <img
                       src={b.img}
                       alt={b.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      unoptimized
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-deep/60 to-transparent" />
                   </div>

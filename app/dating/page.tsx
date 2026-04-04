@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
 import FadeIn from '@/components/fade-in'
@@ -88,13 +87,10 @@ export default function DatingPage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-glow/10 rounded-3xl blur-2xl" />
                 <div className="relative glass-card p-2">
-                  <Image
+                  <img
                     src="https://ek21.com/dating/wp-content/uploads/2023/03/1678493288998-875x1024.jpg"
                     alt="戀愛小秘書娜米"
-                    width={480}
-                    height={400}
                     className="rounded-2xl w-full object-cover"
-                    unoptimized
                   />
                 </div>
               </div>
@@ -160,12 +156,10 @@ export default function DatingPage() {
               <FadeIn key={e.name} delay={i * 80}>
                 <div className="glass-card overflow-hidden hover:border-dream/40 hover:shadow-glow transition-all group">
                   <div className="relative h-48 overflow-hidden">
-                    <Image
+                    <img
                       src={e.img}
                       alt={e.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      unoptimized
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-deep/70 to-transparent" />
                     <div className="absolute bottom-3 left-4">

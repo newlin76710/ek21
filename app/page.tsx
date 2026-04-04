@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import SiteShell from '@/components/site-shell'
 import FeatureCard from '@/components/feature-card'
 import RoomCard from '@/components/room-card'
@@ -121,14 +120,10 @@ export default function HomePage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-dream/20 rounded-3xl blur-2xl scale-110" />
                 <div className="relative glass-card p-2 rounded-3xl">
-                  <Image
+                  <img
                     src="https://www.ek21.com/home/images/chating.gif"
                     alt="尋夢園聊天室介面"
-                    width={480}
-                    height={380}
-                    className="rounded-2xl object-cover"
-                    unoptimized
-                    priority
+                    className="rounded-2xl object-cover w-full"
                   />
                 </div>
               </div>
@@ -148,7 +143,7 @@ export default function HomePage() {
                   className="glass-card p-4 text-center hover:border-dream/40 hover:shadow-glow transition-all group block"
                 >
                   <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">
-                    <Image src={s.icon} alt={s.title} width={40} height={40} unoptimized className="object-contain" />
+                    <img src={s.icon} alt={s.title} className="object-contain w-10 h-10" />
                   </div>
                   <div className="text-white text-sm font-semibold mb-1">{s.title}</div>
                   <div className="text-muted text-xs leading-relaxed">{s.desc}</div>
@@ -267,13 +262,10 @@ export default function HomePage() {
                     <div className="relative">
                       <div className="absolute inset-0 bg-dream/10 rounded-2xl blur-xl" />
                       <div className="relative glass-card p-2">
-                        <Image
+                        <img
                           src={f.img}
                           alt={f.title}
-                          width={540}
-                          height={360}
                           className="rounded-xl w-full object-cover"
-                          unoptimized
                         />
                       </div>
                     </div>
@@ -330,13 +322,10 @@ export default function HomePage() {
                   <Link href="/dating" className="btn-outline text-sm">開始占卜</Link>
                 </div>
                 <div className="shrink-0 hidden sm:block">
-                  <Image
+                  <img
                     src="https://www.ek21.com/home/images/rainbow.png"
                     alt="彩虹數字"
-                    width={120}
-                    height={120}
-                    className="object-contain"
-                    unoptimized
+                    className="object-contain w-[120px] h-[120px]"
                   />
                 </div>
               </div>
@@ -376,13 +365,10 @@ export default function HomePage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-sky/10 rounded-2xl blur-2xl" />
                 <div className="relative glass-card p-2">
-                  <Image
+                  <img
                     src="https://www.ek21.com/home/images/more-img-1.png"
                     alt="承租聊天室"
-                    width={540}
-                    height={400}
                     className="rounded-xl w-full object-cover"
-                    unoptimized
                   />
                 </div>
               </div>
