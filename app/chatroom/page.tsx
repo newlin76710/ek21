@@ -1,8 +1,18 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
 import RoomCard from '@/components/room-card'
+
+const CAROUSEL_IMAGES = [
+  'https://ek21.com/chatroom/images/chatroom_870x400_news.png',
+  'https://ek21.com/chatroom/images/400_375娜米加好友.png',
+  'https://ek21.com/chatroom/images/400_375聯誼活動.png',
+  'https://ek21.com/chatroom/images/400_375男生會員.png',
+  'https://ek21.com/chatroom/images/400_375女生會員.png',
+  'https://ek21.com/chatroom/images/400_375成功案例.png',
+  'https://ek21.com/chatroom/images/400X375解放雙手.png',
+]
 
 const ALL_ROOMS = [
   { name: '平風造雨四無君', category: '孤男寡女', users: 253 },
@@ -37,6 +47,12 @@ export default function ChatroomPage() {
   const [activeCategory, setActiveCategory] = useState('全部')
   const [sort, setSort] = useState('users')
   const [search, setSearch] = useState('')
+  const [slide, setSlide] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => setSlide(s => (s + 1) % CAROUSEL_IMAGES.length), 4000)
+    return () => clearInterval(t)
+  }, [])
 
   let filtered = ALL_ROOMS
     .filter(r => activeCategory === '全部' || r.category === activeCategory)
@@ -50,6 +66,41 @@ export default function ChatroomPage() {
 
   return (
     <SiteShell>
+      {/* Carousel */}
+      <div className="relative w-full overflow-hidden" style={{ aspectRatio: '870/400' }}>
+        {CAROUSEL_IMAGES.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt={`輪播圖片 ${i + 1}`}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+            style={{ opacity: i === slide ? 1 : 0 }}
+          />
+        ))}
+        {/* Prev / Next */}
+        <button
+          onClick={() => setSlide(s => (s - 1 + CAROUSEL_IMAGES.length) % CAROUSEL_IMAGES.length)}
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-colors z-10"
+          aria-label="上一張"
+        >‹</button>
+        <button
+          onClick={() => setSlide(s => (s + 1) % CAROUSEL_IMAGES.length)}
+          className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-colors z-10"
+          aria-label="下一張"
+        >›</button>
+        {/* Dots */}
+        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+          {CAROUSEL_IMAGES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setSlide(i)}
+              className={`w-2 h-2 rounded-full transition-all ${i === slide ? 'bg-white scale-125' : 'bg-white/50'}`}
+              aria-label={`第 ${i + 1} 張`}
+            />
+          ))}
+        </div>
+      </div>
+
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-muted text-sm mb-6">
