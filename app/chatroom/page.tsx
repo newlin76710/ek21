@@ -5,13 +5,13 @@ import SiteShell from '@/components/site-shell'
 import RoomCard from '@/components/room-card'
 
 const CAROUSEL_IMAGES = [
-  'https://ek21.com/chatroom/images/chatroom_870x400_news.png',
-  'https://ek21.com/chatroom/images/400_375娜米加好友.png',
-  'https://ek21.com/chatroom/images/400_375聯誼活動.png',
-  'https://ek21.com/chatroom/images/400_375男生會員.png',
-  'https://ek21.com/chatroom/images/400_375女生會員.png',
-  'https://ek21.com/chatroom/images/400_375成功案例.png',
-  'https://ek21.com/chatroom/images/400X375解放雙手.png',
+  '/chatroom/chatroom_870x400_news.png',
+  '/chatroom/400_375娜米加好友.png',
+  '/chatroom/400_375聯誼活動.png',
+  '/chatroom/400_375男生會員.png',
+  '/chatroom/400_375女生會員.png',
+  '/chatroom/400_375成功案例.png',
+  '/chatroom/400X375解放雙手.png',
 ]
 
 const ALL_ROOMS = [
