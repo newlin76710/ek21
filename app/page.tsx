@@ -4,17 +4,8 @@ import FeatureCard from '@/components/feature-card'
 import RoomCard from '@/components/room-card'
 import StatCounter from '@/components/stat-counter'
 import FadeIn from '@/components/fade-in'
-
-const featuredRooms = [
-  { name: '平風造雨四無君', category: '孤男寡女', users: 253 },
-  { name: '海神~', category: '已婚廣場', users: 136 },
-  { name: '幻紫霓蹤', category: '忘年之交', users: 75 },
-  { name: '水浮萍', category: '情人皇朝', users: 35 },
-  { name: '神樂天心', category: '男歡女愛', users: 16 },
-  { name: '魔力學園', category: '新版聊天室', users: 12 },
-  { name: '聽風的歌', category: '新版聊天室', users: 10 },
-  { name: '你依然在我心深處', category: '台南網友', users: 7 },
-]
+import { ALL_ROOMS, FEATURED_ROOM_NAMES } from '@/lib/rooms'
+import { getLiveRoomData } from '@/lib/ek21-live'
 
 const categories = [
   { name: '孤男寡女', icon: '💑', desc: '單身交友' },
@@ -60,7 +51,16 @@ const subServices = [
   },
 ]
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { rooms: liveCounts } = await getLiveRoomData(ALL_ROOMS.map(r => r.name))
+  const featuredRooms = ALL_ROOMS
+    .filter(r => FEATURED_ROOM_NAMES.includes(r.name))
+    .map(r => ({
+      name: r.name,
+      category: r.category,
+      users: liveCounts[r.name] ?? r.fallbackUsers,
+    }))
+
   return (
     <SiteShell>
       {/* Hero */}
