@@ -68,7 +68,7 @@ export default function RentPage() {
                   立即成為尋夢園中的社群領袖！
                 </p>
                 <div className="flex gap-4">
-                  <a href="mailto:service@ek21.com" className="btn-primary text-lg px-8 py-4">立即申請</a>
+                  <Link href="/contact" className="btn-primary text-lg px-8 py-4">立即申請</Link>
                   <a href="#pricing" className="btn-outline text-lg px-8 py-4">查看方案</a>
                 </div>
               </div>
@@ -152,12 +152,12 @@ export default function RentPage() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="mailto:service@ek21.com"
+                <Link
+                  href="/contact"
                   className={`${p.highlight ? 'btn-primary' : 'btn-outline'} w-full text-center block`}
                 >
                   立即申請
-                </a>
+                </Link>
               </div>
             </FadeIn>
           ))}
@@ -200,7 +200,7 @@ export default function RentPage() {
         <FadeIn>
           <p className="text-center text-muted text-sm mt-6">
             申請及詢問請 Email 至：
-            <a href="mailto:service@ek21.com" className="text-dream hover:underline ml-1 font-medium">service@ek21.com</a>
+            <a href="mailto:mkt@ek21.com" className="text-dream hover:underline ml-1 font-medium">mkt@ek21.com</a>
           </p>
         </FadeIn>
       </section>

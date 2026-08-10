@@ -10,6 +10,7 @@ const navLinks = [
   { href: '/rent', label: '承租聊天室' },
   { href: '/stored', label: '儲值尋夢幣' },
   { href: '/news', label: '尋夢新聞' },
+  { href: '/contact', label: '聯絡我們' },
 ]
 
 export default function SiteHeader() {

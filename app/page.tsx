@@ -95,7 +95,12 @@ export default function HomePage() {
                 <Link href="/chatroom" className="btn-primary text-lg px-8 py-4 text-center animate-pulse-glow">
                   🎤 立即進入聊天室
                 </Link>
-                <Link href="http://member.ek21.com/" className="btn-outline text-lg px-8 py-4 text-center">
+                <Link
+                  href="http://member.ek21.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline text-lg px-8 py-4 text-center"
+                >
                   免費註冊會員
                 </Link>
               </div>
@@ -140,6 +145,7 @@ export default function HomePage() {
               <FadeIn key={s.title}>
                 <Link
                   href={s.href}
+                  {...(s.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   className="glass-card p-4 text-center hover:border-dream/40 hover:shadow-glow transition-all group block"
                 >
                   <div className="w-10 h-10 mx-auto mb-2 flex items-center justify-center">

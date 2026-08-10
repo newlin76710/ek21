@@ -6,6 +6,7 @@ const footerLinks = [
   { href: '/blog/problem', label: '常見問題' },
   { href: '/blog/advertisement', label: '廣告合作' },
   { href: '/blog/opinion', label: '意見反應' },
+  { href: '/contact', label: '聯絡我們' },
 ]
 
 export default function SiteFooter() {
