@@ -131,7 +131,10 @@ export default function HomePage() {
               <h2 className="section-title mt-2">新版聊天室 <span className="badge-new align-middle">新版</span></h2>
               <p className="text-muted">全新介面，點擊卡片直接進入聊天室。</p>
             </div>
-            <a href="#legacy" className="btn-outline shrink-0 px-5 py-2 text-sm">看舊版聊天室 ↓</a>
+            <div className="flex shrink-0 gap-2">
+              <a href={LINKS.newGuide} target="_blank" rel="noopener noreferrer" className="btn-outline px-5 py-2 text-sm">新版聊天室教學</a>
+              <a href="#legacy" className="btn-outline px-5 py-2 text-sm">看舊版聊天室 ↓</a>
+            </div>
           </div>
         </FadeIn>
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
