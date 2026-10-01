@@ -53,6 +53,8 @@ export default function LegacyLoginForm({ room }: { room: Room }) {
           <label htmlFor="nickname" className="mb-1.5 block text-sm text-muted">暱稱</label>
           <input id="nickname" name="nickname" maxLength={18} required autoFocus placeholder="2～8 個中文字或 2～16 個英數字" className={inputClass} />
         </div>
+        {/* 舊頁面的表單也會送出這個欄位（提示文字框），欄位與順序完全照舊頁面：roomid, nickname, password2, password, gender */}
+        <input type="hidden" name="password2" value="非會員不需密碼" />
         <div>
           <label htmlFor="password" className="mb-1.5 block text-sm text-muted">密碼</label>
           <input id="password" name="password" type="password" placeholder="非會員不需密碼" autoComplete="current-password" className={inputClass} />
