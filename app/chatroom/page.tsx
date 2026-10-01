@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
 import ChatroomBrowser from '@/components/chatroom-browser'
-import { OnlineNow, UpdatedAt } from '@/components/live-widgets'
+import { OnlineSentence, UpdatedAt } from '@/components/live-widgets'
 import { LINKS } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default function ChatroomPage() {
             <h1 className="text-4xl font-black sm:text-5xl">選擇喜歡的聊天室</h1>
             <p className="mt-3 flex flex-wrap items-center gap-2 text-muted">
               <span className="live-dot" />
-              現在有 <OnlineNow className="font-black text-live" /> 人在線上等你聊天
+              <OnlineSentence className="font-black text-live" />
               <span className="text-xs text-muted/70">（<UpdatedAt />）</span>
             </p>
           </div>

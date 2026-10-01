@@ -9,13 +9,15 @@ interface RoomCardProps {
 
 export function CountPill({ count, loading }: { count: number | null; loading?: boolean }) {
   if (loading) return <span className="skeleton inline-block h-6 w-16 rounded-full" />
-  const active = count != null && count > 0
+  // 拿不到這間的人數（整個 API 失敗或該來源逾時）就不顯示，避免一直停在「更新中」
+  if (count == null) return null
+  const active = count > 0
   return (
     <span className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold backdrop-blur ${
       active ? 'bg-black/55 text-live' : 'bg-black/55 text-white/70'
     }`}>
       {active ? <span className="live-dot" /> : <span className="h-2 w-2 rounded-full bg-white/40" />}
-      {count == null ? '人數更新中' : active ? `${count.toLocaleString()} 人在線` : '等你來開聊'}
+      {active ? `${count.toLocaleString()} 人在線` : '等你來開聊'}
     </span>
   )
 }

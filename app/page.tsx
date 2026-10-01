@@ -3,7 +3,7 @@ import SiteShell from '@/components/site-shell'
 import FadeIn from '@/components/fade-in'
 import NewsFeed from '@/components/news-feed'
 import Slogan from '@/components/slogan'
-import { HotBoard, LiveRoomGrid, OnlineNow, VersionTotal } from '@/components/live-widgets'
+import { HotBoard, LiveRoomGrid, OnlineSentence, VersionTotal } from '@/components/live-widgets'
 import { LEGACY_ROOMS, LINKS, NEW_ROOMS, TOTAL_MEMBERS } from '@/lib/site'
 import { PLANS } from '@/lib/plans'
 
@@ -72,7 +72,7 @@ export default function HomePage() {
           <div>
             <p className="glass mb-7 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm">
               <span className="live-dot" />
-              <span>現在有 <OnlineNow className="font-black text-live" /> 人在線上等你聊天</span>
+              <OnlineSentence className="font-black text-live" />
             </p>
             <h1 className="text-[2.6rem] font-black leading-[1.12] tracking-tight sm:text-6xl lg:text-7xl">
               今晚，<br />

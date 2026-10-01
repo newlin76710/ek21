@@ -1,0 +1,15 @@
+services:
+  ek21:
+    build: .
+    image: ek21-web
+    container_name: ek21
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      # 本站沒有的路徑轉給舊站主機（例：http://1.2.3.4）；留空則回 404
+      LEGACY_ORIGIN: ${LEGACY_ORIGIN:-}
+    volumes:
+      # 放 cert.pem / key.pem 可換成正式憑證；沒有的話首次啟動自動產生自簽憑證
+      - ./certs:/certs

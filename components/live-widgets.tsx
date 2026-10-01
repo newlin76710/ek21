@@ -34,11 +34,21 @@ export function OnlineNow({ className = '' }: { className?: string }) {
   return <AnimatedNumber value={n} className={className} />
 }
 
+// 「現在有 N 人在線上等你聊天」；人數暫時拿不到時改顯示一般文案，不會一直轉圈
+export function OnlineSentence({ className = '' }: { className?: string }) {
+  const live = useLiveRooms()
+  if (live.status === 'error') return <span>上百間聊天室，隨時等你來聊</span>
+  return <span>現在有 <OnlineNow className={className} /> 人在線上等你聊天</span>
+}
+
+const hhmm = (iso: string) =>
+  new Date(iso).toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit', hour12: false })
+
 export function UpdatedAt() {
   const live = useLiveRooms()
-  if (!live.data) return <span>{live.status === 'error' ? '暫時無法取得人數' : '人數讀取中…'}</span>
-  const t = new Date(live.data.updatedAt)
-  return <span>{t.toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })} 更新・每 30 秒自動刷新</span>
+  if (!live.data) return <span>{live.status === 'error' ? '人數暫時無法顯示，直接點聊天室就能進入' : '人數讀取中…'}</span>
+  if (live.stale) return <span>{hhmm(live.data.updatedAt)} 的人數</span>
+  return <span>{hhmm(live.data.updatedAt)} 更新・每分鐘自動刷新</span>
 }
 
 function sortByLive(rooms: Room[], live: ReturnType<typeof useLiveRooms>, { pinned = false } = {}) {
@@ -107,7 +117,7 @@ export function LiveRoomGrid({ rooms, size, sort = false }: { rooms: Room[]; siz
 
 export function VersionTotal({ rooms }: { rooms: Room[] }) {
   const live = useLiveRooms()
-  if (!live.data) return <span className="skeleton inline-block h-4 w-10 rounded align-middle" />
+  if (!live.data) return live.status === 'error' ? <span>—</span> : <span className="skeleton inline-block h-4 w-10 rounded align-middle" />
   const sum = rooms.reduce((a, r) => a + (roomCount(live, r.id) ?? 0), 0)
   return <AnimatedNumber value={sum} />
 }
