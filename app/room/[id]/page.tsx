@@ -23,6 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${room.name}｜舊版聊天室`,
     description: `進入尋夢園舊版聊天室「${room.name}」，會員輸入密碼、非會員輸入暱稱即可聊天。`,
     alternates: { canonical: `/room/${room.id}/` },
+    // 舊主機的 /login 會檢查 Referer 必須是 ek21 的網址，否則回「請從合法入口進入」。
+    // 本頁是 https、送出到 http，瀏覽器預設會拿掉 Referer，所以這頁改成一律附上網站網址（origin）。
+    referrer: 'origin',
   }
 }
 
