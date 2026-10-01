@@ -30,14 +30,15 @@ export default function RoomCard({ room, count, loading, size = 'md' }: RoomCard
       className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-deep transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:shadow-glow-lg"
       aria-label={`進入${room.name}（${isNew ? '新版' : '舊版'}聊天室）`}
     >
-      <div className={`relative overflow-hidden ${size === 'lg' ? 'aspect-[4/3]' : 'aspect-square'}`}>
+      {/* 圖片完整顯示（方形），文字放在圖片下方，不疊在圖上 */}
+      <div className="relative aspect-square overflow-hidden">
         <img
           src={room.image}
           alt=""
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-night via-night/30 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/50 to-transparent" />
         <div className="absolute left-3 top-3">
           {isNew ? <span className="badge-new">新版</span> : <span className="badge-legacy">舊版</span>}
         </div>
@@ -45,7 +46,7 @@ export default function RoomCard({ room, count, loading, size = 'md' }: RoomCard
           <CountPill count={count} loading={loading} />
         </div>
       </div>
-      <div className="relative -mt-14 p-4">
+      <div className="relative p-4">
         <span className="mb-1 inline-block rounded-md bg-white/10 px-2 py-0.5 text-[11px] text-white/80">{room.tag}</span>
         <h3 className={`truncate font-bold text-white ${size === 'lg' ? 'text-xl' : 'text-base'}`}>{room.name}</h3>
         <p className="mt-0.5 truncate text-xs text-muted">站長 {room.host}</p>

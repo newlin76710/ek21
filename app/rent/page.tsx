@@ -134,7 +134,7 @@ export default function RentPage() {
             <RentApplyForm />
           </div>
           <p className="mt-6 text-center text-sm text-muted">
-            還在考慮嗎？<Link href="/chatroom/" className="text-glow hover:underline">先逛逛新版聊天室</Link>
+            還在考慮嗎？<Link href="/#rooms" className="text-glow hover:underline">先逛逛新版聊天室</Link>
           </p>
         </div>
       </section>

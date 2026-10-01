@@ -6,7 +6,7 @@ import { LINKS, SISTER_SITES } from '@/lib/site'
 
 // internal: 本站頁面（Next 路由）；其餘（姊妹站與外站）一律整頁跳轉
 const navLinks = [
-  { href: '/chatroom/', label: '聊天室', internal: true },
+  { href: '/#rooms', label: '聊天室', internal: true },
   { href: '/rent/', label: '承租聊天室', internal: true },
   { href: LINKS.news, label: '尋夢新聞', internal: false },
   { href: LINKS.dating, label: '交友聯誼', internal: false },
@@ -91,7 +91,7 @@ export default function SiteHeader() {
           <div className="hidden items-center gap-2 lg:flex">
             <a href={LINKS.login} target="_blank" rel="noopener noreferrer" className="rounded-full px-4 py-2 text-sm font-semibold text-gray-200 transition-colors hover:bg-white/10 hover:text-white">登入</a>
             <a href={LINKS.register} target="_blank" rel="noopener noreferrer" className="btn-outline px-4 py-2 text-sm">註冊</a>
-            <Link href="/chatroom/" className="btn-primary px-5 py-2 text-sm">進入聊天室</Link>
+            <Link href="/#rooms" className="btn-primary px-5 py-2 text-sm">進入聊天室</Link>
           </div>
 
           <button
@@ -129,7 +129,7 @@ export default function SiteHeader() {
             <div className="flex gap-2 px-1 pt-3">
               <a href={LINKS.login} target="_blank" rel="noopener noreferrer" className="btn-outline flex-1 py-2.5 text-sm">登入</a>
               <a href={LINKS.register} target="_blank" rel="noopener noreferrer" className="btn-outline flex-1 py-2.5 text-sm">註冊</a>
-              <Link href="/chatroom/" onClick={() => setOpen(false)} className="btn-primary flex-1 py-2.5 text-sm">進入聊天室</Link>
+              <Link href="/#rooms" onClick={() => setOpen(false)} className="btn-primary flex-1 py-2.5 text-sm">進入聊天室</Link>
             </div>
           </div>
         </div>

@@ -59,7 +59,8 @@ export function HotBoard({ limit = 5 }: { limit?: number }) {
           <p className="eyebrow"><span className="live-dot" /> LIVE</p>
           <h2 className="mt-1 text-lg font-black">現在最熱鬧的聊天室</h2>
         </div>
-        <a href="/chatroom/" className="text-xs text-muted hover:text-white">全部 →</a>
+        {/* 直接捲到同頁下方的聊天室列表，不換頁 */}
+        <a href="#rooms" className="text-xs text-muted hover:text-white">全部 ↓</a>
       </div>
       <ol className="space-y-2.5">
         {ranked.map((r, i) => {

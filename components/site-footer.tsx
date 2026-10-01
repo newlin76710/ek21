@@ -12,7 +12,7 @@ const aboutLinks = [
 ]
 
 const serviceLinks = [
-  { href: '/chatroom/', label: '聊天室列表', internal: true },
+  { href: '/#rooms', label: '聊天室列表', internal: true },
   { href: '/rent/', label: '承租聊天室', internal: true },
   { href: '/stored/', label: '儲值尋夢幣', internal: true },
   { href: LINKS.member, label: '會員中心（舊版）', internal: false },

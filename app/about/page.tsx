@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 const businesses = [
-  { href: '/chatroom/', internal: true, icon: '💬', name: '尋夢園聊天室', line1: '免費線上聊天室', line2: '提供匿名／實名雙聊天制度' },
+  { href: '/#rooms', internal: true, icon: '💬', name: '尋夢園聊天室', line1: '免費線上聊天室', line2: '提供匿名／實名雙聊天制度' },
   { href: 'https://eros.ek21.com/', internal: false, icon: '🎉', name: 'eros 主題派對', line1: '最多元的交友活動', line2: '主打豐富有趣的主題活動' },
   { href: LINKS.news, internal: false, icon: '📰', name: '尋夢新聞', line1: '最新最火熱的娛樂新聞', line2: '隨時發掘流行世界大小事' },
   { href: LINKS.dating, internal: false, icon: '💌', name: '戀愛小秘書娜米', line1: '單身久了，', line2: '遇不到新的異性怎麼辦？' },

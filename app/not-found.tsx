@@ -11,7 +11,7 @@ export default function NotFound() {
           <p className="mb-8 text-muted">你迷路了嗎？讓我們帶你回到夢的起點。</p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <Link href="/" className="btn-primary">回到首頁</Link>
-            <Link href="/chatroom/" className="btn-outline">前往聊天室</Link>
+            <Link href="/#rooms" className="btn-outline">前往聊天室</Link>
           </div>
         </div>
       </div>

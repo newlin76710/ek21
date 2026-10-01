@@ -85,7 +85,7 @@ export default function HomePage() {
               上百間主題聊天室讓你隨時隨地找到志同道合的好友。
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link href="/chatroom/" className="btn-primary animate-pulse-glow px-8 py-4 text-lg">💬 前往聊天室</Link>
+              <Link href="/#rooms" className="btn-primary animate-pulse-glow px-8 py-4 text-lg">💬 前往聊天室</Link>
               <a href={LINKS.dating} className="btn-outline px-8 py-4 text-lg">💘 找尋對象</a>
             </div>
             <dl className="mt-10 grid max-w-lg grid-cols-3 gap-3">
@@ -122,6 +122,7 @@ export default function HomePage() {
       </section>
 
       {/* ── 新版聊天室 ───────────────────────── */}
+      <div id="rooms" className="scroll-mt-24" />
       <section className="container-x py-16" id="new">
         <FadeIn>
           <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
@@ -130,7 +131,7 @@ export default function HomePage() {
               <h2 className="section-title mt-2">新版聊天室 <span className="badge-new align-middle">新版</span></h2>
               <p className="text-muted">全新介面，點擊卡片直接進入聊天室。</p>
             </div>
-            <Link href="/chatroom/" className="btn-outline shrink-0 px-5 py-2 text-sm">看全部聊天室 →</Link>
+            <a href="#legacy" className="btn-outline shrink-0 px-5 py-2 text-sm">看舊版聊天室 ↓</a>
           </div>
         </FadeIn>
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
@@ -296,7 +297,7 @@ export default function HomePage() {
               <p className="mx-auto mt-4 max-w-xl text-gray-300">加入尋夢園 LINE 官方帳號，聊天室活動、KTV 比賽、聯誼派對不漏接。</p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <a href={LINKS.line} target="_blank" rel="noopener noreferrer" className="btn-line px-8 py-4 text-lg">加入 LINE 好友</a>
-                <Link href="/chatroom/" className="btn-outline px-8 py-4 text-lg">先去聊天室逛逛</Link>
+                <Link href="/#rooms" className="btn-outline px-8 py-4 text-lg">先去聊天室逛逛</Link>
               </div>
             </div>
           </div>
