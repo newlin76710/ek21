@@ -28,6 +28,7 @@ export const LINKS = {
   register: 'https://chat1.ek21.com/login?mode=register',
   member: 'http://member.ek21.com/',
   avatar: 'http://avatar.ek21.com/',
+  board: 'http://board.ek21.com/',
   line: 'https://line.me/R/ti/p/%40fip4700n',
   namiLine: 'https://lin.ee/iweaTucb',
   email: 'mkt@ek21.com',
