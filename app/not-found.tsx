@@ -4,14 +4,15 @@ import SiteShell from '@/components/site-shell'
 export default function NotFound() {
   return (
     <SiteShell>
-      <div className="min-h-[70vh] flex items-center justify-center text-center px-4">
+      <div className="flex min-h-[70vh] items-center justify-center px-4 text-center">
         <div>
-          <div className="text-8xl font-bold gradient-text mb-4">404</div>
-          <h1 className="text-2xl font-bold text-white mb-3">找不到頁面</h1>
-          <p className="text-muted mb-8">你迷路了嗎？讓我們帶你回到夢的起點</p>
-          <Link href="/" className="btn-primary">
-            回到首頁
-          </Link>
+          <div className="gradient-text mb-4 text-8xl font-black">404</div>
+          <h1 className="mb-3 text-2xl font-black">找不到這個頁面</h1>
+          <p className="mb-8 text-muted">你迷路了嗎？讓我們帶你回到夢的起點。</p>
+          <div className="flex flex-col justify-center gap-3 sm:flex-row">
+            <Link href="/" className="btn-primary">回到首頁</Link>
+            <Link href="/chatroom/" className="btn-outline">前往聊天室</Link>
+          </div>
         </div>
       </div>
     </SiteShell>

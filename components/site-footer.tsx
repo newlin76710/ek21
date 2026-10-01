@@ -1,85 +1,79 @@
 import Link from 'next/link'
+import { LINKS, SISTER_SITES } from '@/lib/site'
 
-const footerLinks = [
-  { href: '/about', label: '關於我們' },
-  { href: '/about/privacy', label: '隱私權條款' },
-  { href: '/blog/problem', label: '常見問題' },
-  { href: '/blog/advertisement', label: '廣告合作' },
-  { href: '/blog/opinion', label: '意見反應' },
-  { href: '/contact', label: '聯絡我們' },
+const aboutLinks = [
+  { href: '/about/', label: '關於尋夢園' },
+  { href: '/about/privacy/', label: '隱私權條款' },
+  { href: '/blog/problem/', label: '常見問題' },
+  { href: '/blog/advertisement/', label: '異業合作' },
+  { href: '/blog/opinion/', label: '意見回饋' },
+  { href: '/contact/', label: '聯絡我們' },
+]
+
+const serviceLinks = [
+  { href: '/chatroom/', label: '聊天室列表', internal: true },
+  { href: '/rent/', label: '承租聊天室', internal: true },
+  { href: '/stored/', label: '儲值尋夢幣', internal: true },
+  { href: LINKS.member, label: '會員中心（舊版）', internal: false },
+  { href: LINKS.avatar, label: '頭像商城（舊版）', internal: false },
 ]
 
 export default function SiteFooter() {
   return (
-    <footer className="bg-deep border-t border-white/10 mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-dream-gradient flex items-center justify-center">
-                <span className="text-white font-bold text-lg">夢</span>
-              </div>
-              <div>
-                <span className="text-white font-bold text-lg leading-none">尋夢園聊天室</span>
-              </div>
+    <footer className="relative mt-24 border-t border-white/10 bg-deep/60">
+      <div className="container-x py-14">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
+          <div className="col-span-2 md:col-span-1">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-dream-gradient text-lg font-black">夢</span>
+              <span className="text-lg font-black">尋夢園聊天室</span>
             </div>
-            <p className="text-muted text-sm leading-relaxed">
-              台灣最大匿名聊天室<br />
-              超過 312 萬名會員<br />
-              免費交友・聊天・KTV歌唱
+            <p className="text-sm leading-7 text-muted">
+              全台最大匿名聊天室。<br />
+              上百間主題聊天室，隨時隨地找到志同道合的好友。
             </p>
+            <div className="mt-5 flex gap-3">
+              <a href={LINKS.line} target="_blank" rel="noopener noreferrer" className="btn-line px-4 py-2 text-sm">LINE 官方帳號</a>
+            </div>
           </div>
 
-          {/* Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">快速連結</h3>
-            <ul className="space-y-2">
-              {footerLinks.map(l => (
+            <h3 className="mb-4 text-sm font-bold tracking-widest text-white/80">服務</h3>
+            <ul className="space-y-2.5 text-sm">
+              {serviceLinks.map(l => (
                 <li key={l.href}>
-                  <Link href={l.href} className="text-muted hover:text-white text-sm transition-colors">
-                    {l.label}
-                  </Link>
+                  {l.internal
+                    ? <Link href={l.href} className="text-muted transition-colors hover:text-white">{l.label}</Link>
+                    : <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-muted transition-colors hover:text-white">{l.label}</a>}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h3 className="text-white font-semibold mb-4">聯絡我們</h3>
-            <ul className="space-y-2 text-sm text-muted">
-              <li>Email: <a href="mailto:mkt@ek21.com" className="hover:text-white transition-colors">mkt@ek21.com</a></li>
-              <li>
-                <a
-                  href="https://line.me/R/ti/p/%40fip4700n"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  LINE 官方帳號
-                </a>
-              </li>
+            <h3 className="mb-4 text-sm font-bold tracking-widest text-white/80">尋夢園家族</h3>
+            <ul className="space-y-2.5 text-sm">
+              {SISTER_SITES.filter(s => s.key !== 'home').map(s => (
+                <li key={s.key}><a href={s.href} className="text-muted transition-colors hover:text-white">{s.label}</a></li>
+              ))}
+              <li><a href="https://www.rainbownumen.org/" target="_blank" rel="noopener noreferrer" className="text-muted transition-colors hover:text-white">彩虹數字</a></li>
             </ul>
-            <div className="flex gap-3 mt-4">
-              <a href="https://line.me/R/ti/p/%40fip4700n" target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg glass flex items-center justify-center text-xs hover:bg-white/20 transition-colors">
-                LINE
-              </a>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"
-                className="w-9 h-9 rounded-lg glass flex items-center justify-center text-xs hover:bg-white/20 transition-colors">
-                FB
-              </a>
-            </div>
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-sm font-bold tracking-widest text-white/80">關於</h3>
+            <ul className="space-y-2.5 text-sm">
+              {aboutLinks.map(l => (
+                <li key={l.href}><Link href={l.href} className="text-muted transition-colors hover:text-white">{l.label}</Link></li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
-          <p className="text-muted text-xs">
-            © {new Date().getFullYear()} 昱科網路股份有限公司 統編: 70525697
-          </p>
-          <p className="text-muted text-xs">
-            All rights reserved. ek21.com
+        <div className="mt-12 flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 text-xs text-muted sm:flex-row">
+          <p>© {new Date().getFullYear()} 昱科網路股份有限公司 ／ 統編：70525697</p>
+          <p>
+            聯絡信箱：<a href={`mailto:${LINKS.email}`} className="hover:text-white">{LINKS.email}</a>
           </p>
         </div>
       </div>

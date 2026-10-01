@@ -2,172 +2,117 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
 import FadeIn from '@/components/fade-in'
+import { LINKS, TOTAL_MEMBERS } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: '關於我們',
-  description: '尋夢園聊天室從大學生個人網站發展至台灣最大匿名聊天室，擁有超過300萬名會員',
+  title: '關於尋夢園',
+  description: '尋夢園是台灣最大的聊天室及交友網站，原由大學生架設的個人網站，後發展出聊天聯盟，致力打造讓會員彼此互動、盡情分享自我的平台。',
+  alternates: { canonical: '/about/' },
 }
 
 const businesses = [
-  {
-    icon: '💬',
-    name: '尋夢園聊天室',
-    desc: '台灣最大的免費匿名聊天室，提供實名與匿名兩種聊天模式，支援 KTV 歌唱功能，擁有數百間主題聊天室。',
-    img: 'https://ek21.com/images/Bitmap.png',
-    link: '/',
-  },
-  {
-    icon: '🎉',
-    name: 'eros主題派對',
-    desc: '精心設計的主題派對活動，已舉辦超過 1,000 場，參與人數超過 10 萬人。夏日泳池派對、萬聖節手工藝，每場都讓人難忘。',
-    img: 'https://ek21.com/images/Bitmap-2.png',
-    link: 'https://eros.ek21.com',
-  },
-  {
-    icon: '📰',
-    name: '尋夢新聞',
-    desc: '每日更新的生活、政經、健康、旅遊等新聞資訊，從日常生活角度出發，讓你永遠不缺聊天的話題。',
-    img: 'https://ek21.com/images/Bitmap-3.png',
-    link: '/news',
-  },
-  {
-    icon: '💌',
-    name: '戀愛小秘書娜米',
-    desc: '台灣最專業的交友顧問服務，透過大數據配對分析，提供個人化的交友建議，已協助超過 4,000 人成功脫單。',
-    img: 'https://ek21.com/images/Bitmap-4.png',
-    link: '/dating',
-  },
+  { href: '/chatroom/', internal: true, icon: '💬', name: '尋夢園聊天室', line1: '免費線上聊天室', line2: '提供匿名／實名雙聊天制度' },
+  { href: 'https://eros.ek21.com/', internal: false, icon: '🎉', name: 'eros 主題派對', line1: '最多元的交友活動', line2: '主打豐富有趣的主題活動' },
+  { href: '/news/', internal: false, icon: '📰', name: '尋夢新聞', line1: '最新最火熱的娛樂新聞', line2: '隨時發掘流行世界大小事' },
+  { href: '/dating/', internal: false, icon: '💌', name: '戀愛小秘書娜米', line1: '單身久了，', line2: '遇不到新的異性怎麼辦？' },
+  { href: 'https://shesay.com/', internal: false, icon: '🌷', name: 'SheSay', line1: '專為單身女性打造', line2: '聯誼活動與一對一戀愛諮詢' },
 ]
 
-const timeline = [
-  { year: '早期', event: '大學生創立個人聊天網站，提供簡單的文字聊天功能' },
-  { year: '成長期', event: '聊天室數量快速增長，加入 KTV 歌唱功能，吸引大量用戶' },
-  { year: '擴張期', event: '會員突破百萬，成為台灣最大交友網站，蕃薯藤排行第一' },
-  { year: '多元化', event: '推出 eros 主題派對、戀愛小秘書娜米等多元服務' },
-  { year: '現在', event: '超過 312 萬會員，持續創新，提供全台最優質的匿名社群體驗' },
-]
-
-const achievements = [
-  { value: '312萬+', label: '註冊會員數' },
-  { value: '台灣第一', label: '最大交友網站' },
-  { value: '台灣第六', label: '全台流量排名' },
-  { value: '蕃薯藤第一', label: '交友類別排名' },
+const honors = [
+  { title: '交友網站台灣 No.1', desc: '全台最大交友社群網站，調查當時會員人數 286 萬人次', note: 'NetValue、Alexa Research、數位週刊調查' },
+  { title: '全台第 6 大網站', desc: '全世界最大網路調查公司 NetValue 之 pageview 調查', note: 'NetValue' },
+  { title: '蕃薯藤熱站排名第一', desc: 'Hotrank 熱站排行榜交友類第一名', note: 'www.hotrank.com.tw' },
 ]
 
 export default function AboutPage() {
   return (
     <SiteShell>
-      {/* Hero */}
-      <section className="relative overflow-hidden py-20">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-dream/10 rounded-full blur-3xl" />
-        </div>
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative -mt-24 overflow-hidden pb-16 pt-36">
+        <div aria-hidden className="aurora pointer-events-none absolute -inset-x-40 -top-40 h-[600px]" />
+        <div className="container-x relative max-w-4xl text-center">
           <FadeIn>
-            <h1 className="text-5xl font-bold text-white mb-6">關於尋夢園</h1>
-            <p className="text-muted text-lg leading-relaxed">
-              尋夢園從一位大學生的個人網站，逐步成長為台灣最大的匿名聊天室平台。
-              我們始終以打造互動豐富的會員體驗為核心，
-              讓每一位用戶都能在尋夢園中找到屬於自己的社群。
-            </p>
+            <p className="eyebrow">ABOUT</p>
+            <h1 className="mt-3 text-4xl font-black sm:text-6xl">關於<span className="gradient-text">尋夢園</span></h1>
+            <p className="mt-6 text-xl font-bold text-white">台灣最大的匿名聊天室。</p>
+            <p className="mt-2 text-lg text-gray-300">擁有上百間聊天室，讓您隨時隨地都能找到志同道合的好友！</p>
+            <p className="mt-6 inline-flex rounded-full bg-white/5 px-5 py-2 text-sm text-muted">目前總會員人數 <span className="mx-1 font-black text-white">{TOTAL_MEMBERS.toLocaleString()}</span> 人</p>
           </FadeIn>
         </div>
       </section>
 
-      {/* Achievements */}
-      <section className="bg-deep/50 border-y border-white/5 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-            {achievements.map((a, i) => (
-              <FadeIn key={a.label} delay={i * 80}>
-                <div className="glass-card p-6 text-center">
-                  <div className="gradient-text text-2xl font-bold mb-2">{a.value}</div>
-                  <div className="text-muted text-sm">{a.label}</div>
-                </div>
-              </FadeIn>
-            ))}
+      <section className="container-x max-w-5xl pb-16">
+        <FadeIn>
+          <div className="grid gap-8 rounded-3xl border border-white/10 bg-deep p-8 sm:p-12 md:grid-cols-[auto_1fr] md:items-center">
+            <div className="flex h-28 w-28 items-center justify-center rounded-[2rem] bg-dream-gradient text-6xl font-black shadow-glow">夢</div>
+            <div>
+              <h2 className="text-2xl font-black">尋夢園是什麼？</h2>
+              <p className="mt-4 leading-8 text-gray-300">
+                尋夢園是台灣最大的聊天室及交友網站。原本是由大學生架設的個人網站，後來發展出聊天聯盟，
+                一路以來致力於打造能夠讓會員們彼此互動、盡情分享自我的平台。
+              </p>
+            </div>
+          </div>
+        </FadeIn>
+      </section>
+
+      <section className="border-y border-white/5 bg-deep/40 py-16">
+        <div className="container-x">
+          <FadeIn>
+            <h2 className="section-title text-center">經營項目</h2>
+            <p className="section-subtitle text-center">從聊天室出發，陪你聊天、找話題、認識新朋友</p>
+          </FadeIn>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {businesses.map((b, i) => {
+              const inner = (
+                <>
+                  <div className="text-4xl">{b.icon}</div>
+                  <h3 className="mt-4 text-lg font-black group-hover:text-glow">{b.name}</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted">{b.line1}<br />{b.line2}</p>
+                </>
+              )
+              const cls = 'glass-card group block h-full p-6 text-center transition-all hover:-translate-y-1 hover:border-white/25'
+              return (
+                <FadeIn key={b.name} delay={i * 60}>
+                  {b.internal ? <Link href={b.href} className={cls}>{inner}</Link> : <a href={b.href} className={cls}>{inner}</a>}
+                </FadeIn>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Business Units */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <section className="container-x py-16">
         <FadeIn>
-          <div className="text-center mb-12">
-            <h2 className="section-title">我們的事業</h2>
-            <p className="section-subtitle">尋夢園旗下四大服務，全方位滿足你的社群需求</p>
-          </div>
+          <h2 className="section-title text-center">網站榮耀</h2>
+          <p className="section-subtitle text-center">一路走來，謝謝每一位會員的陪伴</p>
         </FadeIn>
-        <div className="space-y-8">
-          {businesses.map((b, i) => (
-            <FadeIn key={b.name} delay={i * 80}>
-              <Link href={b.link} className="glass-card overflow-hidden hover:border-dream/40 hover:shadow-glow transition-all block group">
-                <div className={`grid grid-cols-1 sm:grid-cols-3 ${i % 2 !== 0 ? 'sm:[direction:rtl]' : ''}`}>
-                  <div className="relative h-48 sm:h-auto overflow-hidden">
-                    <img
-                      src={b.img}
-                      alt={b.name}
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-deep/60 to-transparent" />
-                  </div>
-                  <div className={`sm:col-span-2 p-6 sm:p-8 flex flex-col justify-center ${i % 2 !== 0 ? '[direction:ltr]' : ''}`}>
-                    <div className="text-4xl mb-3">{b.icon}</div>
-                    <h3 className="text-white font-bold text-2xl mb-3 group-hover:text-glow transition-colors">{b.name}</h3>
-                    <p className="text-muted leading-relaxed">{b.desc}</p>
-                  </div>
-                </div>
-              </Link>
+        <div className="grid gap-5 md:grid-cols-3">
+          {honors.map((h, i) => (
+            <FadeIn key={h.title} delay={i * 80}>
+              <div className="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-soft to-deep p-7">
+                <div className="text-3xl">🏆</div>
+                <h3 className="mt-4 text-xl font-black gradient-text">{h.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-gray-300">{h.desc}</p>
+                <p className="mt-4 text-[11px] text-muted">資料來源：{h.note}</p>
+              </div>
             </FadeIn>
           ))}
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="bg-deep/50 border-y border-white/5 py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <h2 className="section-title">發展歷程</h2>
-              <p className="section-subtitle">從個人網站到台灣最大社群平台</p>
-            </div>
-          </FadeIn>
-          <div className="relative">
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-dream/20" />
-            <div className="space-y-8">
-              {timeline.map((t, i) => (
-                <FadeIn key={t.year} delay={i * 100}>
-                  <div className="flex gap-6 items-start">
-                    <div className="w-12 h-12 rounded-full bg-dream-gradient flex items-center justify-center text-white text-xs font-bold shrink-0 shadow-glow z-10">
-                      {i + 1}
-                    </div>
-                    <div className="glass-card p-4 flex-1">
-                      <div className="gradient-text text-sm font-bold mb-1">{t.year}</div>
-                      <div className="text-gray-300 text-sm leading-relaxed">{t.event}</div>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+      <section className="container-x max-w-4xl pb-8">
         <FadeIn>
-          <h2 className="section-title mb-4">聯絡我們</h2>
-          <div className="glass-card p-8 space-y-3 text-sm">
-            <p className="text-gray-300">公司名稱：<span className="text-white font-medium">昱科網路股份有限公司</span></p>
-            <p className="text-gray-300">統一編號：<span className="text-white font-medium">70525697</span></p>
-            <p className="text-gray-300">Email：
-              <a href="mailto:mkt@ek21.com" className="text-dream hover:underline ml-1">mkt@ek21.com</a>
+          <div className="rounded-3xl border border-white/10 bg-deep p-8 sm:p-10">
+            <h2 className="text-2xl font-black">經營策略</h2>
+            <p className="mt-4 leading-8 text-gray-300">
+              除了交友網站外，我們秉持一貫成功的實績經驗，成功開發新型社群軟體，
+              包括新型多人版聊天室、討論區、留言板、日記、電子報等，
+              希望上下游垂直整合，提供最先進的社群整合性服務。
             </p>
-            <div className="flex gap-3 justify-center pt-2">
-              <a href="mailto:mkt@ek21.com" className="btn-primary text-sm">📧 發送 Email</a>
-              <a href="https://line.me/R/ti/p/%40fip4700n" target="_blank" rel="noopener noreferrer" className="btn-outline text-sm">
-                💬 LINE 聯絡
-              </a>
+            <div className="mt-8 grid gap-3 border-t border-white/10 pt-6 text-sm sm:grid-cols-3">
+              <p><span className="text-muted">公司名稱</span><br /><span className="font-bold">昱科網路股份有限公司</span></p>
+              <p><span className="text-muted">統一編號</span><br /><span className="font-bold">70525697</span></p>
+              <p><span className="text-muted">聯絡信箱</span><br /><a href={`mailto:${LINKS.email}`} className="font-bold text-dream hover:underline">{LINKS.email}</a></p>
             </div>
           </div>
         </FadeIn>

@@ -1,0 +1,98 @@
+[
+  {
+    "id": "windsong",
+    "version": "new",
+    "name": "聽風的歌",
+    "host": "聽風的歌,路過人間",
+    "tag": "音樂",
+    "url": "https://windsong.ek21.com/",
+    "image": "/img/rooms/oadz_51.jpg"
+  },
+  {
+    "id": "boygirl",
+    "version": "new",
+    "name": "海洋の好歌聲",
+    "host": "~平風造雨四無君~",
+    "tag": "KTV",
+    "url": "https://boygirl.ek21.com/",
+    "image": "/img/rooms/obzc_11.jpg"
+  },
+  {
+    "id": "starnight",
+    "version": "new",
+    "name": "忘年音樂電台",
+    "host": "倪霓",
+    "tag": "音樂",
+    "url": "https://starnight.ek21.com/",
+    "image": "/img/rooms/ofi_12.jpg"
+  },
+  {
+    "id": "chat1",
+    "version": "new",
+    "name": "歡喜就好",
+    "host": "神樂天心",
+    "tag": "閒聊",
+    "url": "https://chat1.ek21.com/",
+    "image": "/img/rooms/nc_41.jpg"
+  },
+  {
+    "id": "ofi_11",
+    "version": "legacy",
+    "server": "ip69.ek21.com",
+    "name": "已婚廣場",
+    "host": "海神~",
+    "tag": "已婚",
+    "url": "http://ip69.ek21.com/ofi_11/?ot=1",
+    "image": "/img/rooms/ofi_11.jpg"
+  },
+  {
+    "id": "oadz_21",
+    "version": "legacy",
+    "server": "ip140.ek21.com",
+    "name": "孤男寡女",
+    "host": "~平風造雨四無君~",
+    "tag": "單身",
+    "url": "http://ip140.ek21.com/oadz_21/?ot=1",
+    "image": "/img/rooms/oadz_21.jpg"
+  },
+  {
+    "id": "d_3",
+    "version": "legacy",
+    "server": "ip147.ek21.com",
+    "name": "好歌星聚點-歡唱KTV",
+    "host": "~平風造雨四無君~",
+    "tag": "KTV",
+    "url": "http://ip147.ek21.com/d_3/?ot=1",
+    "image": "/img/rooms/d_3.jpg"
+  },
+  {
+    "id": "oeb_10",
+    "version": "legacy",
+    "server": "ip5.ek21.com",
+    "name": "幸福海洋-KTV",
+    "host": "~平風造雨四無君~",
+    "tag": "KTV",
+    "url": "http://ip5.ek21.com/oeb_10/?ot=1",
+    "image": "/img/rooms/oeb_10.jpg"
+  },
+  {
+    "id": "oadz_41",
+    "version": "legacy",
+    "server": "ip140.ek21.com",
+    "name": "我是歌手主聊天室",
+    "host": "你依然在我心深處",
+    "tag": "KTV",
+    "url": "http://ip140.ek21.com/oadz_41/?ot=1",
+    "image": "/img/rooms/oadz_41.jpg"
+  },
+  {
+    "id": "vi_25",
+    "version": "legacy",
+    "server": "ip202.ek21.com",
+    "name": "忘塵谷",
+    "host": "隨人",
+    "tag": "心情",
+    "url": "http://ip202.ek21.com/vi_25/?ot=1",
+    "image": "/img/rooms/vi_25.jpg"
+  }
+]

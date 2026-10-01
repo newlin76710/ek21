@@ -1,0 +1,20 @@
+name = "ek21"
+main = "worker/index.js"
+compatibility_date = "2026-09-18"
+
+# 網站是純靜態檔案（npm run build 產生在 out/），由 Workers Static Assets 直接回應，不計入 Worker 請求數。
+# 只有 /api/*（聊天室即時人數）與找不到檔案的網址才會執行 worker/index.js。
+[assets]
+directory = "./out"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+run_worker_first = ["/api/*"]
+
+# 網域與路由（Cloudflare 後台 → ek21.com → Workers Routes）：
+#   ek21.com/*、www.ek21.com/*  → ek21（本 Worker）
+#   ek21.com/dating*、*.ek21.com/dating*  → dating
+#   ek21.com/news*、*.ek21.com/news*      → ek21news
+# 路由較長者優先，因此 /dating、/news 會由姊妹站處理，首頁連過去不會被本站攔截。
+
+[observability]
+enabled = true

@@ -1,111 +1,133 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { LINKS, SISTER_SITES } from '@/lib/site'
 
+// internal: 本站頁面（Next 路由）；其餘（/news/、/dating/ 姊妹站與外站）一律整頁跳轉
 const navLinks = [
-  { href: '/chatroom', label: '聊天室' },
-  { href: '/dating', label: '交友聯誼' },
-  { href: '/rent', label: '承租聊天室' },
-  { href: '/stored', label: '儲值尋夢幣' },
-  { href: '/news', label: '尋夢新聞' },
-  { href: '/contact', label: '聯絡我們' },
+  { href: '/chatroom/', label: '聊天室', internal: true },
+  { href: '/rent/', label: '承租聊天室', internal: true },
+  { href: '/news/', label: '尋夢新聞', internal: false },
+  { href: '/dating/', label: '交友聯誼', internal: false },
+  { href: '/stored/', label: '儲值尋夢幣', internal: true },
+  { href: '/about/', label: '關於尋夢園', internal: true },
 ]
+
+function NavLink({ href, internal, className, children, onClick }: {
+  href: string
+  internal: boolean
+  className: string
+  children: React.ReactNode
+  onClick?: () => void
+}) {
+  if (internal) return <Link href={href} className={className} onClick={onClick}>{children}</Link>
+  return <a href={href} className={className} onClick={onClick}>{children}</a>
+}
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false)
-  const pathname = usePathname()
+  const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname() || '/'
 
-  const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/')
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const isActive = (href: string) => href !== '/' && pathname.startsWith(href.replace(/\/$/, ''))
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-dream-gradient flex items-center justify-center shadow-glow group-hover:shadow-glow-lg transition-all">
-              <Image
-                src="https://www.ek21.com/images/logo/logo_w.png"
-                alt="尋夢園"
-                width={28}
-                height={28}
-                className="object-contain"
-                unoptimized
-                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-              />
-            </div>
-            <div>
-              <span className="text-white font-bold text-lg leading-none">尋夢園</span>
-              <span className="text-glow/70 text-xs block leading-none">聊天室</span>
-            </div>
+    <header className="fixed inset-x-0 top-0 z-50">
+      {/* 尋夢園家族：姊妹站之間互相切換 */}
+      <div className="bg-black/60 backdrop-blur border-b border-white/5 text-[12px]">
+        <div className="container-x flex h-8 items-center justify-between gap-4">
+          <nav aria-label="尋夢園家族" className="flex min-w-0 items-center gap-4 overflow-x-auto whitespace-nowrap [scrollbar-width:none]">
+            {SISTER_SITES.map(s => (
+              <a
+                key={s.key}
+                href={s.href}
+                className={s.key === 'home' ? 'font-bold text-white' : 'text-muted transition-colors hover:text-white'}
+                aria-current={s.key === 'home' ? 'page' : undefined}
+              >
+                {s.label}
+              </a>
+            ))}
+          </nav>
+          <div className="hidden shrink-0 items-center gap-4 sm:flex">
+            <a href={LINKS.member} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white">會員中心<span className="ml-1 text-gold/80">舊版</span></a>
+            <a href={LINKS.avatar} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white">頭像商城<span className="ml-1 text-gold/80">舊版</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div className={`border-b transition-colors duration-300 ${scrolled || open ? 'border-white/10 bg-night/85 backdrop-blur-xl' : 'border-transparent bg-transparent'}`}>
+        <div className="container-x flex h-16 items-center justify-between">
+          <Link href="/" className="group flex items-center gap-3" aria-label="尋夢園聊天室 首頁">
+            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-dream-gradient text-lg font-black shadow-glow transition-transform group-hover:rotate-6">夢</span>
+            <span className="leading-tight">
+              <span className="block text-lg font-black tracking-wide">尋夢園</span>
+              <span className="block text-[11px] text-muted">全台最大匿名聊天室</span>
+            </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="主選單">
             {navLinks.map(l => (
-              <Link
+              <NavLink
                 key={l.href}
                 href={l.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  isActive(l.href)
-                    ? 'text-white bg-dream/20 border border-dream/30'
-                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                internal={l.internal}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  isActive(l.href) ? 'bg-white/10 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'
                 }`}
               >
                 {l.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="http://member.ek21.com/" className="btn-outline text-sm py-2">
-              登入 / 註冊
-            </Link>
-            <Link href="/chatroom" className="btn-primary text-sm py-2">
-              立即進入聊天室
-            </Link>
+          <div className="hidden items-center gap-2 lg:flex">
+            <a href={LINKS.member} target="_blank" rel="noopener noreferrer" className="btn-outline px-4 py-2 text-sm">登入／註冊</a>
+            <Link href="/chatroom/" className="btn-primary px-5 py-2 text-sm">進入聊天室</Link>
           </div>
 
-          {/* Mobile toggle */}
           <button
-            className="md:hidden text-white p-2"
+            className="rounded-xl p-2 text-white hover:bg-white/10 lg:hidden"
             onClick={() => setOpen(!open)}
             aria-label={open ? '關閉選單' : '開啟選單'}
             aria-expanded={open}
+            aria-controls="mobile-nav"
           >
             <div className="w-5 space-y-1.5">
-              <span className={`block h-0.5 bg-white rounded transition-all duration-300 ${open ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`block h-0.5 bg-white rounded transition-all duration-300 ${open ? 'opacity-0 scale-x-0' : ''}`} />
-              <span className={`block h-0.5 bg-white rounded transition-all duration-300 ${open ? '-rotate-45 -translate-y-2' : ''}`} />
+              <span className={`block h-0.5 rounded bg-white transition-all duration-300 ${open ? 'translate-y-2 rotate-45' : ''}`} />
+              <span className={`block h-0.5 rounded bg-white transition-all duration-300 ${open ? 'scale-x-0 opacity-0' : ''}`} />
+              <span className={`block h-0.5 rounded bg-white transition-all duration-300 ${open ? '-translate-y-2 -rotate-45' : ''}`} />
             </div>
           </button>
         </div>
 
-        {/* Mobile Nav */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ${open ? 'max-h-96 pb-4' : 'max-h-0'}`}>
-          <div className="border-t border-white/10 pt-4 space-y-1">
+        <div id="mobile-nav" className={`overflow-hidden transition-[max-height] duration-300 lg:hidden ${open ? 'max-h-[560px]' : 'max-h-0'}`}>
+          <div className="container-x space-y-1 border-t border-white/10 pb-5 pt-3">
             {navLinks.map(l => (
-              <Link
+              <NavLink
                 key={l.href}
                 href={l.href}
+                internal={l.internal}
                 onClick={() => setOpen(false)}
-                className={`block px-4 py-2.5 rounded-lg text-sm transition-colors ${
-                  isActive(l.href) ? 'text-white bg-dream/20' : 'text-gray-300 hover:text-white hover:bg-white/10'
-                }`}
+                className={`block rounded-xl px-4 py-3 text-sm ${isActive(l.href) ? 'bg-white/10 text-white' : 'text-gray-300 hover:bg-white/5'}`}
               >
                 {l.label}
-              </Link>
+              </NavLink>
             ))}
-            <div className="flex gap-3 pt-2 px-4">
-              <Link href="http://member.ek21.com/" className="btn-outline text-sm py-2 flex-1 text-center">
-                登入 / 註冊
-              </Link>
-              <Link href="/chatroom" className="btn-primary text-sm py-2 flex-1 text-center">
-                進入聊天室
-              </Link>
+            <div className="grid grid-cols-2 gap-2 px-1 pt-1 text-sm">
+              <a href={LINKS.member} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-white/5 px-4 py-3 text-gray-300">會員中心 <span className="text-gold/80">舊版</span></a>
+              <a href={LINKS.avatar} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-white/5 px-4 py-3 text-gray-300">頭像商城 <span className="text-gold/80">舊版</span></a>
+            </div>
+            <div className="flex gap-3 px-1 pt-3">
+              <a href={LINKS.member} target="_blank" rel="noopener noreferrer" className="btn-outline flex-1 py-2.5 text-sm">登入／註冊</a>
+              <Link href="/chatroom/" onClick={() => setOpen(false)} className="btn-primary flex-1 py-2.5 text-sm">進入聊天室</Link>
             </div>
           </div>
         </div>
