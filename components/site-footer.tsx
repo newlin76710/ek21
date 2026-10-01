@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Slogan from './slogan'
 import { LINKS, SISTER_SITES } from '@/lib/site'
 
 const aboutLinks = [
@@ -28,6 +29,7 @@ export default function SiteFooter() {
               <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-dream-gradient text-lg font-black">夢</span>
               <span className="text-lg font-black">尋夢園聊天室</span>
             </div>
+            <Slogan className="mb-3 text-sm" />
             <p className="text-sm leading-7 text-muted">
               全台最大匿名聊天室。<br />
               上百間主題聊天室，隨時隨地找到志同道合的好友。

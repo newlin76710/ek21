@@ -2,6 +2,7 @@ import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
 import FadeIn from '@/components/fade-in'
 import NewsFeed from '@/components/news-feed'
+import Slogan from '@/components/slogan'
 import { HotBoard, LiveRoomGrid, OnlineNow, VersionTotal } from '@/components/live-widgets'
 import { LEGACY_ROOMS, LINKS, NEW_ROOMS, TOTAL_MEMBERS } from '@/lib/site'
 import { PLANS } from '@/lib/plans'
@@ -77,7 +78,8 @@ export default function HomePage() {
               今晚，<br />
               想跟<span className="gradient-text">誰</span>聊聊？
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-gray-300">
+            <Slogan className="mt-6 text-lg sm:text-xl" />
+            <p className="mt-4 max-w-xl text-lg leading-8 text-gray-300">
               <strong className="text-white">尋夢園聊天室</strong>－全台最大匿名聊天室。
               實名／匿名雙聊天制度，唱歌、私訊、交朋友，
               上百間主題聊天室讓你隨時隨地找到志同道合的好友。
