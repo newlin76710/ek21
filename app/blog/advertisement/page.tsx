@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import SiteShell from '@/components/site-shell'
+import FormspreeForm from '@/components/formspree-form'
 
 export const metadata: Metadata = {
   title: '廣告合作',
@@ -43,52 +44,19 @@ export default function AdvertisementPage() {
         </div>
 
         {/* Contact Form */}
-        <div className="glass-card p-8">
-          <h2 className="text-white font-bold text-xl mb-6">填寫合作意向</h2>
-          <form className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label className="text-sm text-muted mb-1 block">姓名</label>
-                <input
-                  type="text"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-muted focus:outline-none focus:border-dream/50"
-                  placeholder="您的姓名"
-                />
-              </div>
-              <div>
-                <label className="text-sm text-muted mb-1 block">電話</label>
-                <input
-                  type="tel"
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-muted focus:outline-none focus:border-dream/50"
-                  placeholder="聯絡電話"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="text-sm text-muted mb-1 block">Email</label>
-              <input
-                type="email"
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-muted focus:outline-none focus:border-dream/50"
-                placeholder="business@example.com"
-              />
-            </div>
-            <div>
-              <label className="text-sm text-muted mb-1 block">合作說明</label>
-              <textarea
-                rows={4}
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-muted focus:outline-none focus:border-dream/50 resize-none"
-                placeholder="請說明您的廣告需求或合作想法"
-              />
-            </div>
-            <button type="submit" className="btn-primary w-full py-4">
-              送出合作意向
-            </button>
-          </form>
-          <p className="text-muted text-xs text-center mt-4">
-            或直接 Email 聯絡：
-            <a href="mailto:mkt@ek21.com" className="text-dream hover:underline ml-1">mkt@ek21.com</a>
-          </p>
-        </div>
+        <FormspreeForm
+          title="填寫合作意向"
+          subject="【尋夢園】異業合作"
+          submitLabel="送出合作意向"
+          successMessage="已收到您的合作意向！我們將盡快與您聯繫。"
+          fields={[
+            { name: 'name', label: '姓名', required: true, placeholder: '您的姓名', half: true },
+            { name: 'phone', label: '電話', type: 'tel', placeholder: '聯絡電話', half: true },
+            { name: 'company', label: '公司／品牌', placeholder: '選填', half: true },
+            { name: 'email', label: 'Email', type: 'email', required: true, placeholder: 'business@example.com', half: true },
+            { name: 'message', label: '合作說明', type: 'textarea', required: true, placeholder: '請說明您的廣告需求或合作想法' },
+          ]}
+        />
       </section>
     </SiteShell>
   )

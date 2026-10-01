@@ -3,7 +3,7 @@ import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
 import FadeIn from '@/components/fade-in'
 import { PLANS } from '@/lib/plans'
-import { LINKS } from '@/lib/site'
+import RentApplyForm from '@/components/rent-apply-form'
 
 export const metadata: Metadata = {
   title: '承租聊天室・成為站長',
@@ -25,22 +25,6 @@ const perks = [
   { icon: '/img/home/Bicon-5.png', title: '專屬聊天室名稱', desc: '獨一無二的聊天室名' },
 ]
 
-const mailBody = [
-  '您好，我想承租尋夢園新版聊天室：',
-  '',
-  '姓名：',
-  '電話：',
-  'EMAIL：',
-  '方案：（50 人／100 人／150 人）',
-  '承租月數：（三個月／六個月／一年）',
-  '備註：（例：請於傍晚聯絡我）',
-].join('\n')
-
-const mailto = (seats?: number) =>
-  `mailto:${LINKS.email}?subject=${encodeURIComponent(`承租聊天室${seats ? `－${seats} 人方案` : ''}`)}&body=${encodeURIComponent(
-    seats ? mailBody.replace('（50 人／100 人／150 人）', `${seats} 人`) : mailBody,
-  )}`
-
 export default function RentPage() {
   return (
     <SiteShell>
@@ -61,7 +45,7 @@ export default function RentPage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a href="#pricing" className="btn-primary px-8 py-4 text-lg">查看價目表</a>
-              <a href={mailto()} className="btn-outline px-8 py-4 text-lg">✉️ 來信申請</a>
+              <a href="#apply" className="btn-outline px-8 py-4 text-lg">✉️ 線上申請</a>
             </div>
           </FadeIn>
           <FadeIn delay={120}>
@@ -113,7 +97,7 @@ export default function RentPage() {
                     </li>
                   ))}
                 </ul>
-                <a href={mailto(p.seats)} className={`${p.highlight ? 'btn-primary' : 'btn-outline'} w-full`}>申請 {p.seats} 人方案</a>
+                <a href={`#apply-${p.seats}`} className={`${p.highlight ? 'btn-primary' : 'btn-outline'} w-full`}>申請 {p.seats} 人方案</a>
               </div>
             </FadeIn>
           ))}
@@ -142,34 +126,17 @@ export default function RentPage() {
       </section>
 
       {/* How to apply */}
-      <section className="container-x py-16">
-        <FadeIn>
-          <div className="mx-auto max-w-3xl rounded-3xl border border-white/10 bg-deep p-8 sm:p-10">
-            <h2 className="text-2xl font-black">我要承租聊天室</h2>
-            <p className="mt-3 text-gray-300">
-              請來信至 <a href={mailto()} className="font-bold text-dream hover:underline">{LINKS.email}</a> 並附上以下資訊，我們收到信後將會與您聯繫承租細節。
-            </p>
-            <dl className="mt-6 grid gap-3 text-sm sm:grid-cols-2">
-              {[
-                ['姓名', '方便稱呼您的名字'],
-                ['電話', '聯繫承租細節用'],
-                ['EMAIL', '回覆承租資訊用'],
-                ['承租月數', '三個月、六個月、一年（時間越長折扣越多）'],
-                ['方案', '50 人、100 人或 150 人'],
-                ['備註', '例：請於傍晚聯絡我'],
-              ].map(([k, v]) => (
-                <div key={k} className="rounded-2xl bg-white/5 p-4">
-                  <dt className="font-bold text-white">{k}</dt>
-                  <dd className="mt-1 text-muted">{v}</dd>
-                </div>
-              ))}
-            </dl>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a href={mailto()} className="btn-primary">✉️ 一鍵寄出申請信</a>
-              <Link href="/chatroom/" className="btn-outline">先逛逛新版聊天室</Link>
-            </div>
+      <section id="apply" className="container-x scroll-mt-28 py-16">
+        <div className="mx-auto max-w-3xl rounded-3xl border border-white/10 bg-deep p-8 sm:p-10">
+          <h2 className="text-2xl font-black">我要承租聊天室</h2>
+          <p className="mt-3 text-gray-300">填寫以下資訊送出申請，我們收到後將會與您聯繫承租細節。</p>
+          <div className="mt-6">
+            <RentApplyForm />
           </div>
-        </FadeIn>
+          <p className="mt-6 text-center text-sm text-muted">
+            還在考慮嗎？<Link href="/chatroom/" className="text-glow hover:underline">先逛逛新版聊天室</Link>
+          </p>
+        </div>
       </section>
     </SiteShell>
   )

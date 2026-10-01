@@ -20,10 +20,11 @@ export default function ContactPage() {
         <ContactForm />
 
         <p className="text-center text-muted text-sm mt-8">
-          或直接 Email 至：
-          <a href="mailto:mkt@ek21.com" className="text-dream hover:underline ml-1 font-medium">
-            mkt@ek21.com
+          也可以加入
+          <a href="https://line.me/R/ti/p/%40fip4700n" target="_blank" rel="noopener noreferrer" className="text-dream hover:underline ml-1 font-medium">
+            尋夢園 LINE 官方帳號
           </a>
+          與我們聯繫
         </p>
       </section>
     </SiteShell>

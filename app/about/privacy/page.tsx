@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
-import { LINKS } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: '聊天室隱私權條款',
@@ -196,7 +196,7 @@ export default function PrivacyPage() {
               </article>
             ))}
             <p className="text-sm text-muted">
-              對本條款有任何疑問，歡迎來信 <a href={`mailto:${LINKS.email}`} className="text-dream hover:underline">{LINKS.email}</a>。
+              對本條款有任何疑問，歡迎透過<Link href="/contact/" className="text-dream hover:underline">聯絡我們表單</Link>與我們聯繫。
             </p>
           </div>
         </div>

@@ -73,7 +73,7 @@ export default function SiteFooter() {
         <div className="mt-12 flex flex-col items-center justify-between gap-2 border-t border-white/10 pt-6 text-xs text-muted sm:flex-row">
           <p>© {new Date().getFullYear()} 昱科網路股份有限公司 ／ 統編：70525697</p>
           <p>
-            聯絡信箱：<a href={`mailto:${LINKS.email}`} className="hover:text-white">{LINKS.email}</a>
+            有任何問題？<Link href="/contact/" className="text-glow hover:text-white">填寫聯絡表單</Link>
           </p>
         </div>
       </div>

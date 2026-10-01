@@ -112,7 +112,7 @@ export default function AboutPage() {
             <div className="mt-8 grid gap-3 border-t border-white/10 pt-6 text-sm sm:grid-cols-3">
               <p><span className="text-muted">公司名稱</span><br /><span className="font-bold">昱科網路股份有限公司</span></p>
               <p><span className="text-muted">統一編號</span><br /><span className="font-bold">70525697</span></p>
-              <p><span className="text-muted">聯絡信箱</span><br /><a href={`mailto:${LINKS.email}`} className="font-bold text-dream hover:underline">{LINKS.email}</a></p>
+              <p><span className="text-muted">聯絡我們</span><br /><Link href="/contact/" className="font-bold text-dream hover:underline">線上聯絡表單 →</Link></p>
             </div>
           </div>
         </FadeIn>

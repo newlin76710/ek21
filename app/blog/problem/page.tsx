@@ -35,7 +35,7 @@ const faqs = [
     category: '🪙 儲值與點數',
     questions: [
       { q: '尋夢幣可以用來做什麼？', a: '尋夢幣可用於購買頭像裝扮與個人造型、擴充留言板功能、送出虛擬禮物給聊天室成員，以及解鎖部分進階聊天室功能。' },
-      { q: '如何儲值尋夢幣？', a: '前往「儲值尋夢幣」頁面，選擇適合你的方案，依照指示完成銀行轉帳，再將匯款資訊 Email 至 mkt@ek21.com，核對完成後即會撥款尋夢幣到你的會員編號。' },
+      { q: '如何儲值尋夢幣？', a: '前往「儲值尋夢幣」頁面，選擇適合你的方案，依照指示完成銀行轉帳，再填寫儲值頁上的轉點表單，核對完成後即會撥款尋夢幣到你的會員編號。' },
       { q: '尋夢幣有效期限嗎？', a: '尋夢幣儲值後不設定有效期限，請放心使用。但請注意，尋夢幣不可退款，也不可轉移給其他會員。' },
       { q: '如何查看我的點數餘額？', a: '登入帳號後，在個人設定頁面可以查看目前的尋夢幣餘額及使用記錄。' },
     ],
@@ -43,7 +43,7 @@ const faqs = [
   {
     category: '🏠 承租聊天室',
     questions: [
-      { q: '如何申請承租聊天室？', a: '請 Email 至 mkt@ek21.com，說明你希望的聊天室規格（50/100/150人）及預計使用時長，客服人員會與你確認細節並安排設置。' },
+      { q: '如何申請承租聊天室？', a: '到「承租聊天室」頁面填寫申請表單，選擇聊天室規格（50/100/150人）及承租月數，客服人員會與你確認細節並安排設置。' },
       { q: '承租聊天室可以自訂名稱和外觀嗎？', a: '是的！承租聊天室可以完全自訂名稱，100人以上方案還包含客製化設計圖片，讓你的聊天室展現獨特個性。' },
       { q: '承租聊天室可以設置管理員嗎？', a: '可以！站長可以指派多名管理員協助管理聊天室，設置成員權限，確保聊天環境良好。' },
     ],
@@ -126,7 +126,7 @@ export default function ProblemPage() {
           <h2 className="text-white font-bold text-lg mb-2">還有其他問題？</h2>
           <p className="text-muted text-sm mb-4">我們的客服團隊隨時為你提供協助</p>
           <div className="flex gap-3 justify-center">
-            <a href="mailto:mkt@ek21.com" className="btn-primary text-sm">📧 Email 客服</a>
+            <Link href="/contact/" className="btn-primary text-sm">📧 聯絡客服</Link>
             <a href="https://line.me/R/ti/p/%40fip4700n" target="_blank" rel="noopener noreferrer" className="btn-outline text-sm">💬 LINE 客服</a>
           </div>
         </div>
