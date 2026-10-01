@@ -4,7 +4,7 @@ import FadeIn from '@/components/fade-in'
 import NewsFeed from '@/components/news-feed'
 import Slogan from '@/components/slogan'
 import { HotBoard, LiveRoomGrid, OnlineSentence, VersionTotal } from '@/components/live-widgets'
-import { LEGACY_ROOMS, LINKS, NEW_ROOMS, TOTAL_MEMBERS } from '@/lib/site'
+import { LEGACY_ROOMS, LINKS, NEW_ROOMS, NEW_TAB, TOTAL_MEMBERS } from '@/lib/site'
 import { PLANS } from '@/lib/plans'
 
 const family = [
@@ -86,7 +86,7 @@ export default function HomePage() {
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link href="/#rooms" className="btn-primary animate-pulse-glow px-8 py-4 text-lg">💬 前往聊天室</Link>
-              <a href={LINKS.dating} className="btn-outline px-8 py-4 text-lg">💘 找尋對象</a>
+              <a href={LINKS.dating} {...NEW_TAB} className="btn-outline px-8 py-4 text-lg">💘 找尋對象</a>
             </div>
             <dl className="mt-10 grid max-w-lg grid-cols-3 gap-3">
               <div className="glass rounded-2xl p-3 text-center">
@@ -170,7 +170,7 @@ export default function HomePage() {
               <h2 className="section-title mt-2">聊天找不到話題？我們幫你找！</h2>
               <p className="text-muted">尋夢新聞每天網羅新奇趣聞，帶著話題進聊天室。</p>
             </div>
-            <a href={LINKS.news} className="btn-outline shrink-0 px-5 py-2 text-sm">更多新聞 →</a>
+            <a href={LINKS.news} {...NEW_TAB} className="btn-outline shrink-0 px-5 py-2 text-sm">更多新聞 →</a>
           </div>
         </FadeIn>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -193,6 +193,7 @@ export default function HomePage() {
               <FadeIn key={f.name} delay={i * 80}>
                 <a
                   href={f.href}
+                  {...NEW_TAB}
                   className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-deep transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:shadow-glow-lg sm:flex-row"
                 >
                   <div className={`relative flex items-center justify-center bg-gradient-to-br ${f.accent} to-transparent p-6 sm:w-2/5`}>

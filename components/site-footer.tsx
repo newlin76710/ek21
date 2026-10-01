@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Slogan from './slogan'
-import { LINKS, SISTER_SITES } from '@/lib/site'
+import { LINKS, NEW_TAB, SISTER_SITES } from '@/lib/site'
 
 const aboutLinks = [
   { href: '/about/', label: '關於尋夢園' },
@@ -57,7 +57,7 @@ export default function SiteFooter() {
             <h3 className="mb-4 text-sm font-bold tracking-widest text-white/80">尋夢園家族</h3>
             <ul className="space-y-2.5 text-sm">
               {SISTER_SITES.filter(s => s.key !== 'home').map(s => (
-                <li key={s.key}><a href={s.href} className="text-muted transition-colors hover:text-white">{s.label}</a></li>
+                <li key={s.key}><a href={s.href} {...NEW_TAB} className="text-muted transition-colors hover:text-white">{s.label}</a></li>
               ))}
               <li><a href="https://www.rainbownumen.org/" target="_blank" rel="noopener noreferrer" className="text-muted transition-colors hover:text-white">彩虹數字</a></li>
             </ul>

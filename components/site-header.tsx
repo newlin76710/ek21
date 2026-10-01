@@ -2,9 +2,9 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LINKS, SISTER_SITES } from '@/lib/site'
+import { LINKS, NEW_TAB, SISTER_SITES } from '@/lib/site'
 
-// internal: 本站頁面（Next 路由）；其餘（姊妹站與外站）一律整頁跳轉
+// internal: 本站頁面（Next 路由）；其餘（姊妹站）另開新分頁
 const navLinks = [
   { href: '/#rooms', label: '聊天室', internal: true },
   { href: '/rent/', label: '承租聊天室', internal: true },
@@ -22,7 +22,7 @@ function NavLink({ href, internal, className, children, onClick }: {
   onClick?: () => void
 }) {
   if (internal) return <Link href={href} className={className} onClick={onClick}>{children}</Link>
-  return <a href={href} className={className} onClick={onClick}>{children}</a>
+  return <a href={href} {...NEW_TAB} className={className} onClick={onClick}>{children}</a>
 }
 
 export default function SiteHeader() {
@@ -49,6 +49,7 @@ export default function SiteHeader() {
               <a
                 key={s.key}
                 href={s.href}
+                {...(s.key === 'home' ? {} : NEW_TAB)}
                 className={s.key === 'home' ? 'font-bold text-white' : 'text-muted transition-colors hover:text-white'}
                 aria-current={s.key === 'home' ? 'page' : undefined}
               >

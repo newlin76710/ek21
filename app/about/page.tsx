@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import SiteShell from '@/components/site-shell'
 import FadeIn from '@/components/fade-in'
-import { LINKS, TOTAL_MEMBERS } from '@/lib/site'
+import { LINKS, NEW_TAB, TOTAL_MEMBERS } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: '關於尋夢園',
@@ -73,7 +73,7 @@ export default function AboutPage() {
               const cls = 'glass-card group block h-full p-6 text-center transition-all hover:-translate-y-1 hover:border-white/25'
               return (
                 <FadeIn key={b.name} delay={i * 60}>
-                  {b.internal ? <Link href={b.href} className={cls}>{inner}</Link> : <a href={b.href} className={cls}>{inner}</a>}
+                  {b.internal ? <Link href={b.href} className={cls}>{inner}</Link> : <a href={b.href} {...NEW_TAB} className={cls}>{inner}</a>}
                 </FadeIn>
               )
             })}

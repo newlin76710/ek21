@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import RoomCard from './room-card'
-import { isNewTab, roomHref, ROOMS, type Room } from '@/lib/site'
+import { NEW_TAB, roomHref, ROOMS, type Room } from '@/lib/site'
 import { onlineCount, roomCount, useLiveRooms } from '@/lib/use-live-rooms'
 
 // 數字變動時平滑滾動
@@ -77,7 +77,7 @@ export function HotBoard({ limit = 5 }: { limit?: number }) {
           const n = roomCount(live, r.id)
           return (
             <li key={r.id}>
-              <a href={roomHref(r)} {...(isNewTab(r) ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/5">
+              <a href={roomHref(r)} {...NEW_TAB} className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/5">
                 <span className={`w-5 text-center text-sm font-black ${i === 0 ? 'text-gold' : i < 3 ? 'text-dream' : 'text-muted'}`}>{i + 1}</span>
                 <img src={r.image} alt="" className="h-11 w-11 shrink-0 rounded-xl object-cover" loading="lazy" />
                 <div className="min-w-0 flex-1">

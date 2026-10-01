@@ -47,10 +47,12 @@ export const SISTER_SITES = [
 
 export const isExternal = (href: string) => /^https?:\/\//.test(href)
 
+// 聊天室（新版、舊版）與姊妹站（尋夢新聞、娜米、eros、SheSay、彩虹數字）一律另開新分頁
+export const NEW_TAB = { target: '_blank', rel: 'noopener noreferrer' } as const
+
 // ── 舊版聊天室登入（沿用舊站 home.js 的 OnLogin4b 與 Facebook 登入）──
 // 新版直接開聊天室網址；舊版先到本站的 /room/<房號>/ 登入頁，再送出到舊主機
 export const roomHref = (r: Room) => (r.version === 'legacy' ? `/room/${r.id}/` : r.url)
-export const isNewTab = (r: Room) => r.version === 'new'
 
 // 表單 POST 到該聊天室主機的 /login，欄位 roomid / nickname / password / gender（boy|girl）
 export const legacyLoginAction = (r: Room) => `http://${r.server}/login`

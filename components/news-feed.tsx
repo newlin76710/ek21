@@ -39,7 +39,7 @@ export default function NewsFeed() {
 
   if (failed || (items && items.length === 0)) {
     return (
-      <a href={`${NEWS_BASE}/`} className="glass-card flex flex-col items-start gap-3 p-6 transition-colors hover:border-white/25 sm:col-span-2 lg:col-span-3">
+      <a href={`${NEWS_BASE}/`} target="_blank" rel="noopener noreferrer" className="glass-card flex flex-col items-start gap-3 p-6 transition-colors hover:border-white/25 sm:col-span-2 lg:col-span-3">
         <span className="text-2xl">📰</span>
         <span className="text-lg font-bold">到尋夢新聞看看今天大家在聊什麼</span>
         <span className="text-sm text-muted">尋夢新聞每日推播最夯最熱門的新聞，隨時掌握流行大小事。</span>
@@ -68,6 +68,8 @@ export default function NewsFeed() {
         <a
           key={n.id}
           href={`${NEWS_BASE}/article/${n.id}`}
+          target="_blank"
+          rel="noopener noreferrer"
           className="glass-card group flex flex-col p-5 transition-all hover:-translate-y-0.5 hover:border-white/25"
         >
           <div className="mb-2 flex items-center gap-2 text-[11px]">
