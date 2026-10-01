@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "cf:build": "npm run build",
-    "preview": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy",
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy",
     "lint": "next lint"
   },
   "dependencies": {

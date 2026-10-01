@@ -2,6 +2,10 @@ name = "ek21"
 main = "worker/index.js"
 compatibility_date = "2026-09-18"
 
+# wrangler deploy / dev 前先產生 out/（Cloudflare Workers Builds 只跑 npm install + wrangler deploy 時也能部署）
+[build]
+command = "npm run build"
+
 # 網站是純靜態檔案（npm run build 產生在 out/），由 Workers Static Assets 直接回應，不計入 Worker 請求數。
 # 只有 /api/*（聊天室即時人數）與找不到檔案的網址才會執行 worker/index.js。
 [assets]
