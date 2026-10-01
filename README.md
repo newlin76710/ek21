@@ -50,9 +50,15 @@ npm run deploy     # build + wrangler deploy
 不用 Cloudflare Workers 時，改用 Docker 跑 `server/index.mjs`（只用 Node 內建模組），提供靜態網站、`/api/rooms`（記憶體快取 60 秒）與舊網址轉址，聽 80 與 443。
 
 ```bash
-# 部署（在本機打包上傳，於伺服器 /opt/ek21 建置）
-docker compose build
-docker compose up -d
+# 第一次：在伺服器 clone
+cd /opt && git clone https://github.com/newlin76710/ek21.git ek21
+cd /opt/ek21 && docker compose up -d --build
+
+# 之後每次更新
+cd /opt/ek21 && git pull && docker compose up -d --build
+
+# 查看狀態／日誌
+docker ps --filter name=ek21
 docker logs -f ek21
 ```
 

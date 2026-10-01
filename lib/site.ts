@@ -46,3 +46,17 @@ export const SISTER_SITES = [
 ] as const
 
 export const isExternal = (href: string) => /^https?:\/\//.test(href)
+
+// ── 舊版聊天室登入（沿用舊站 home.js 的 OnLogin4b 與 Facebook 登入）──
+// 新版直接開聊天室網址；舊版先到本站的 /room/<房號>/ 登入頁，再送出到舊主機
+export const roomHref = (r: Room) => (r.version === 'legacy' ? `/room/${r.id}/` : r.url)
+export const isNewTab = (r: Room) => r.version === 'new'
+
+// 表單 POST 到該聊天室主機的 /login，欄位 roomid / nickname / password / gender（boy|girl）
+export const legacyLoginAction = (r: Room) => `http://${r.server}/login`
+
+// Facebook 登入：授權後由 api.ek21.com 處理並進入該聊天室（client_id 沿用舊頁面目前啟用的那一組）
+const FB_CLIENT_ID = '915669256300787'
+export const legacyFacebookUrl = (r: Room) =>
+  // 網址格式與舊頁面完全相同（redirect_uri 不編碼），避免與 Facebook 後台登記的網址不一致
+  `https://www.facebook.com/dialog/oauth?client_id=${FB_CLIENT_ID}&redirect_uri=https://api.ek21.com/fbekc/login/${r.server}/${r.id}/&response_type=token&display=popup`

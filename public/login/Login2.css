@@ -1,0 +1,389 @@
+.main { 
+  background:#f5f5f5;
+}
+.ml_logo {
+  text-align: center;
+  padding: 20px 0 0px;
+}
+.login {
+  padding: 0 50px;
+  margin: 0;
+  background:#fff;
+  height:1000px;
+}
+.login h1 {
+  margin: 5px 0 0;
+  color: #555;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.login p {
+  text-align: center;
+  margin-bottom: 0px;
+}
+#roomid {
+  color:#ffffff;
+  font-size:1px;
+}
+.login .roomnum {
+  margin-bottom: 8px;
+}
+.login .fbenter {
+    background: #445ea0;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+.login .fbenter:hover {
+    background: #375090;
+    text-decoration: none;
+}
+
+.login .or {
+  margin-bottom: 5px;
+}
+.login .loginform li .nameform {
+  width: 83%;
+  float: right;
+  border: 1px solid #909090;
+  border-radius: 5px;
+  height: 36px;
+  padding-left: 10px;
+  background:#ffffff;
+}
+.login .loginform li .nameform2 {
+  width: 83%;
+  float: right;
+  border: 1px solid #f5f4f5;
+  border-radius: 5px;
+  height: 36px;
+  padding-left: 10px;
+  background:#f5f4f5;
+}
+.login .loginform li {
+    width: 100%;
+}
+.login .loginform li p {
+    width: 12.3%;
+    max-width: 12.3%;
+    min-width: 12.3%;
+    float: left;
+    font-size: 16px;
+    line-height: 36px;
+}
+.login .loginform {
+  padding: 0px;
+}
+.mb {
+    margin-bottom:10px;
+}
+.mb20 {
+    margin-bottom:15px;
+}
+.mb30 {
+    margin-bottom:1px;
+}
+.clearfix {
+    display: block;
+}
+.loginform li .sexselect {
+    width: 83%;
+    float: right;
+    /*margin-right: 10px;*/
+    line-height: 3px;
+    font-size: 16px;
+}
+.loginform li p {
+    width: 12.3%;
+    max-width: 12.3%;
+    min-width: 12.3%;
+    float: left;
+    font-size: 16px;
+    line-height: 36px;
+}
+.login .mainenter:hover {
+    background: #fb8b06;
+    text-decoration: none;
+}
+.login .mainenter {
+    background: #ff9a00;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+.login .gomem {
+  color: #ff9a00;
+  font-size: 14px;
+  text-decoration: none;
+  background: url(images/mlogin_go.png) right no-repeat;
+  padding-right: 24px;
+}
+.tc {
+  margin-top:10px;
+  text-align: right;
+  height: 10px;
+}
+
+.mgoback {
+    display: block;
+    background: #000;
+    width: 100%;
+    line-height: 36px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+
+}
+.ad {
+  margin: 0 auto;
+  width: 336px;
+  height: 280px;
+  /*border: 1px solid black;*/
+  max-width: 100%;
+}
+.mgoback {
+  display: none;
+}
+.mgoback:hover {
+    color: #ccc;
+    text-decoration: none;
+}
+.admain {
+  background: gray;
+  height: 200vh;  
+}
+.passwordUrl {
+  text-align: center;
+}
+.passwordUrl a {
+  color: gray;
+}
+.intro{
+  background: #F5F5F5;
+  margin: 0;
+}
+.all {
+  margin: 30px;
+
+}
+.all .title {
+  height: 190px;
+  margin: auto 0;
+}
+.intro .title .title_p1{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.intro .title p {
+  color: #4A4A4A;
+}
+.all .title p{
+  margin-bottom: 30px;
+}
+.all .title .intro_img {
+  display: flex;
+  justify-content:space-between;
+}
+.main .all .da_bar1 {
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+}
+.main .all .da_bar1 p{
+  font-size: 18px;
+}
+.all .da_img {
+  padding: 0px;
+  text-align: center;
+}
+.all .da_img img{
+  height: 280px;
+  padding: 15px 10px;
+  max-width: 100%;
+}
+.all .news {
+  margin-top: 20px;
+  margin-left: -15px;
+}
+.main .all .news .news_title {
+  font-size: 18px;
+}
+.all .news .da_img1 {
+  display: flex;
+  margin-bottom: 100px;
+}
+.main .all .news img{
+  max-width: 100%;
+}
+@media screen and (max-width: 767px) and (min-width: 700px){
+  .all .title{
+    text-align: center;
+    margin: 0 auto;
+
+  }
+  .all .da_bar1 {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .all .news {
+    /*display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-left: 15px;
+    */
+    text-align: center;
+    margin: 0 auto;
+  }
+
+
+  .all .da_bar1 .da_img1 img {
+    /*margin: 0 auto;*/
+    height: 250px;
+    /*min-width: 300px;*/
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 865px){
+  
+  .all .title {
+    height: 250px;
+    padding: 60px 15px 0px 15px;
+  }
+
+  .all .news img {
+      max-width: 100%;
+      margin-bottom: 95px;
+  }
+
+  .all .news {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-left: 15px;
+  }
+
+
+}
+@media only screen and (min-width: 360px) and (max-width: 700px){
+  .ad {
+    height: 100px;
+    width: 300px;
+    margin-bottom: 30px;
+    /*border: 1px solid black;*/
+  }
+  .passwordUrl {
+    display: none;
+
+  }
+  .tc {
+  margin-top:20px;
+  text-align: center;
+  height: 30px;
+  }
+
+  .intro {
+    margin-top: 40px;
+    background: white;
+  }
+  
+  .all .da_bar1  {
+    font-size: 18px;
+    
+  }
+  .all .title {
+    text-align: center;
+  }
+
+  .all .da_bar1{
+    text-align: center;
+  }
+  .main .all .da_bar1 p{
+    padding: 0px;
+  }
+  .mgoback {
+    display: block !important;
+    /*color:#9A9B9A;*/
+    background-color: #9A9B9A;
+  }
+  .all .title{
+    padding-top: 0px;
+  }
+  .all .news {
+    text-align: center;
+    margin: 0 auto;
+    
+
+  }
+  
+  .all .title p{
+    font-size: 14px;
+  }
+  
+  .all .da_img img{
+    height: 250px;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  .all .da_img1 img {
+    margin: 0 auto;
+    height: 250px;
+    /*width: 300px;*/
+  }
+  /*.all .news p{
+    margin: 0 40px 20px 40px;
+  }*/
+ }
+
+@media only screen and (min-width: 320px) and (max-width: 360px){
+  .login {
+    padding: 0 10px;
+  }
+  .tc {
+    margin-top:20px;
+    text-align: center;
+    height: 30px;
+  }
+  .intro {
+    background: inherit;
+  }
+  .ad {
+    height: 100px;
+    /*width: 300px;*/
+    margin-bottom: 30px;
+    /*border: 1px solid black;*/
+  }
+  .all {
+    text-align: center;
+    margin: 0;
+  }
+  .all .da_bar1{
+    margin-top: 40px;
+    padding: 0;
+  }
+  .main .all .da_bar1 p{
+    padding: 0px;
+  }
+  .all .title {
+    padding-left: 0px;
+  }
+  .all .da_img img {
+    margin-bottom: 20px;
+    /*max-width: 100%;*/
+  }
+ .mgoback{
+    display: block;
+    /*color:#9A9B9A;*/
+    background-color: #9A9B9A;
+  }
+ }
+

@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import RoomCard from './room-card'
-import { ROOMS, type Room } from '@/lib/site'
+import { isNewTab, roomHref, ROOMS, type Room } from '@/lib/site'
 import { onlineCount, roomCount, useLiveRooms } from '@/lib/use-live-rooms'
 
 // 數字變動時平滑滾動
@@ -77,7 +77,7 @@ export function HotBoard({ limit = 5 }: { limit?: number }) {
           const n = roomCount(live, r.id)
           return (
             <li key={r.id}>
-              <a href={r.url} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/5">
+              <a href={roomHref(r)} {...(isNewTab(r) ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-white/5">
                 <span className={`w-5 text-center text-sm font-black ${i === 0 ? 'text-gold' : i < 3 ? 'text-dream' : 'text-muted'}`}>{i + 1}</span>
                 <img src={r.image} alt="" className="h-11 w-11 shrink-0 rounded-xl object-cover" loading="lazy" />
                 <div className="min-w-0 flex-1">
@@ -112,6 +112,19 @@ export function LiveRoomGrid({ rooms, size, sort = false }: { rooms: Room[]; siz
         <RoomCard key={r.id} room={r} size={size} count={roomCount(live, r.id)} loading={live.status === 'loading'} />
       ))}
     </>
+  )
+}
+
+// 單一聊天室「目前人數 N 人」（舊版登入頁用）；拿不到人數就不顯示
+export function RoomLiveCount({ id }: { id: string }) {
+  const live = useLiveRooms()
+  if (live.status === 'loading') return <span className="skeleton inline-block h-4 w-24 rounded align-middle" />
+  const n = roomCount(live, id)
+  if (n == null) return null
+  return (
+    <span className="inline-flex items-center gap-2 font-bold text-live">
+      <span className="live-dot" />目前人數 <AnimatedNumber value={n} /> 人
+    </span>
   )
 }
 

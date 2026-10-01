@@ -1,4 +1,4 @@
-import type { Room } from '@/lib/site'
+import { isNewTab, roomHref, type Room } from '@/lib/site'
 
 interface RoomCardProps {
   room: Room
@@ -26,9 +26,8 @@ export default function RoomCard({ room, count, loading, size = 'md' }: RoomCard
   const isNew = room.version === 'new'
   return (
     <a
-      href={room.url}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={roomHref(room)}
+      {...(isNewTab(room) ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       className="group relative block overflow-hidden rounded-2xl border border-white/10 bg-deep transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:shadow-glow-lg"
       aria-label={`進入${room.name}（${isNew ? '新版' : '舊版'}聊天室）`}
     >
