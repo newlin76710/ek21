@@ -13,7 +13,7 @@ export default function ContactForm() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
-    const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID
+    const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID || 'xaenkkgb'
 
     if (!formId) {
       setStatus('error')

@@ -30,7 +30,8 @@ export default function ChatroomPage() {
             </p>
           </div>
           <div className="flex gap-3">
-            <a href={LINKS.member} target="_blank" rel="noopener noreferrer" className="btn-outline px-5 py-2.5 text-sm">註冊／登入</a>
+            <a href={LINKS.login} target="_blank" rel="noopener noreferrer" className="btn-outline px-5 py-2.5 text-sm">登入</a>
+            <a href={LINKS.register} target="_blank" rel="noopener noreferrer" className="btn-outline px-5 py-2.5 text-sm">註冊</a>
             <Link href="/rent/" className="btn-primary px-5 py-2.5 text-sm">我要當站長</Link>
           </div>
         </div>

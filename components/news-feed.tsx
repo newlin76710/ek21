@@ -13,7 +13,8 @@ interface NewsItem {
 }
 
 const NEWS_API = process.env.NEXT_PUBLIC_NEWS_API || '/news/api/news?limit=6'
-const NEWS_BASE = process.env.NEXT_PUBLIC_NEWS_BASE || '/news'
+// 文章連結走 news.ek21.com；API 用同網域 /news 路徑讀取（避免跨網域 CORS）
+const NEWS_BASE = process.env.NEXT_PUBLIC_NEWS_BASE || 'https://news.ek21.com'
 
 function timeAgo(iso: string) {
   const m = Math.max(1, Math.round((Date.now() - new Date(iso).getTime()) / 60000))

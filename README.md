@@ -24,7 +24,7 @@
 - 新版聊天室 → 直接開 `https://<slug>.ek21.com/`
 - 舊版聊天室 → 開舊版登入頁 `http://ipXX.ek21.com/<房號>/?ot=1`
 - 會員中心 `http://member.ek21.com/`、頭像商城 `http://avatar.ek21.com/` 標示為「舊版」
-- `/news/`、`/dating/` 是同網域的姊妹站 Worker，一律用 `<a>` 整頁跳轉（不用 Next `<Link>`），本站也不再有這兩個路徑的頁面
+- 尋夢新聞 → `https://news.ek21.com/`、戀愛小秘書娜米 → `https://dating.ek21.com/`（`lib/site.ts` 的 `LINKS`），一律用 `<a>` 整頁跳轉；本站不再有 `/news`、`/dating` 頁面
 
 ## 開發與部署
 

@@ -8,7 +8,7 @@ import { PLANS } from '@/lib/plans'
 
 const family = [
   {
-    href: '/news/',
+    href: LINKS.news,
     img: '/img/home/more-img-1.png',
     name: '尋夢新聞',
     hook: '找不到話題，不知道該聊些什麼嗎？',
@@ -17,7 +17,7 @@ const family = [
     accent: 'from-dream/30',
   },
   {
-    href: '/dating/',
+    href: LINKS.dating,
     img: '/img/home/more-img-3-1.jpg',
     name: '戀愛小秘書娜米',
     hook: '工作久了，遇不到新的異性怎麼辦？',
@@ -84,7 +84,7 @@ export default function HomePage() {
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Link href="/chatroom/" className="btn-primary animate-pulse-glow px-8 py-4 text-lg">💬 前往聊天室</Link>
-              <a href="/dating/" className="btn-outline px-8 py-4 text-lg">💘 找尋對象</a>
+              <a href={LINKS.dating} className="btn-outline px-8 py-4 text-lg">💘 找尋對象</a>
             </div>
             <dl className="mt-10 grid max-w-lg grid-cols-3 gap-3">
               <div className="glass rounded-2xl p-3 text-center">
@@ -164,7 +164,7 @@ export default function HomePage() {
               <h2 className="section-title mt-2">聊天找不到話題？我們幫你找！</h2>
               <p className="text-muted">尋夢新聞每天網羅新奇趣聞，帶著話題進聊天室。</p>
             </div>
-            <a href="/news/" className="btn-outline shrink-0 px-5 py-2 text-sm">更多新聞 →</a>
+            <a href={LINKS.news} className="btn-outline shrink-0 px-5 py-2 text-sm">更多新聞 →</a>
           </div>
         </FadeIn>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

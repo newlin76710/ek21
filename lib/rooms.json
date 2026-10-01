@@ -2,6 +2,7 @@
   {
     "id": "windsong",
     "version": "new",
+    "pinned": true,
     "name": "聽風的歌",
     "host": "聽風的歌,路過人間",
     "tag": "音樂",
@@ -38,6 +39,7 @@
   {
     "id": "ofi_11",
     "version": "legacy",
+    "pinned": true,
     "server": "ip69.ek21.com",
     "name": "已婚廣場",
     "host": "海神~",

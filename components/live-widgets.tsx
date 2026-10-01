@@ -41,8 +41,10 @@ export function UpdatedAt() {
   return <span>{t.toLocaleTimeString('zh-TW', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })} 更新・每 30 秒自動刷新</span>
 }
 
-function sortByLive(rooms: Room[], live: ReturnType<typeof useLiveRooms>) {
-  return [...rooms].sort((a, b) => (roomCount(live, b.id) ?? -1) - (roomCount(live, a.id) ?? -1))
+function sortByLive(rooms: Room[], live: ReturnType<typeof useLiveRooms>, { pinned = false } = {}) {
+  return [...rooms].sort((a, b) =>
+    (pinned ? Number(!!b.pinned) - Number(!!a.pinned) : 0) ||
+    (roomCount(live, b.id) ?? -1) - (roomCount(live, a.id) ?? -1))
 }
 
 // 首頁右側：即時熱度排行
@@ -91,7 +93,8 @@ export function HotBoard({ limit = 5 }: { limit?: number }) {
 
 export function LiveRoomGrid({ rooms, size, sort = false }: { rooms: Room[]; size?: 'lg' | 'md'; sort?: boolean }) {
   const live = useLiveRooms()
-  const list = sort ? sortByLive(rooms, live) : rooms
+  // 置頂的聊天室固定在最左邊，其餘依人數排序
+  const list = sort ? sortByLive(rooms, live, { pinned: true }) : rooms
   return (
     <>
       {list.map(r => (
