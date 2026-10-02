@@ -19,7 +19,7 @@ export default function StoredPage() {
           <p className="eyebrow">STORED</p>
           <h1 className="mt-3 text-4xl font-black sm:text-5xl">尋夢幣儲值</h1>
           <p className="mt-4 text-lg text-muted">
-            尋夢幣可以於<a href={LINKS.avatar} target="_blank" rel="noopener noreferrer" className="text-glow hover:underline">頭像商城（舊版）</a>購買頭貼，或擴增留言板等功能。
+            尋夢幣可以於<a href={LINKS.avatar} target="_blank" rel="noopener noreferrer" className="text-glow hover:underline">頭像商城</a>購買頭貼，或擴增留言板等功能。
           </p>
         </div>
 

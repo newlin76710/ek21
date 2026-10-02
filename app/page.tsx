@@ -48,7 +48,7 @@ const family = [
 
 const legacyServices = [
   { href: LINKS.member, icon: '👤', name: '會員中心', desc: '註冊、登入、修改會員資料與密碼', tag: '舊版' },
-  { href: LINKS.avatar, icon: '🎭', name: '頭像商城', desc: '用尋夢幣購買頭貼、擴增留言板', tag: '舊版' },
+  { href: LINKS.avatar, icon: '🎭', name: '頭像商城', desc: '用尋夢幣購買頭貼、擴增留言板', tag: '' },
   { href: '/stored/', icon: '💰', name: '儲值尋夢幣', desc: '100 元起，匯款後來信即可轉點', tag: '' },
 ]
 

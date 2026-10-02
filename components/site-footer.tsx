@@ -16,7 +16,7 @@ const serviceLinks = [
   { href: '/rent/', label: '承租聊天室', internal: true },
   { href: '/stored/', label: '儲值尋夢幣', internal: true },
   { href: LINKS.member, label: '會員中心（舊版）', internal: false },
-  { href: LINKS.avatar, label: '頭像商城（舊版）', internal: false },
+  { href: LINKS.avatar, label: '頭像商城', internal: false },
   { href: LINKS.board, label: '留言板', internal: false },
 ]
 
