@@ -17,7 +17,7 @@ const serviceLinks = [
   { href: '/stored/', label: '儲值尋夢幣', internal: true },
   { href: LINKS.member, label: '會員中心（舊版）', internal: false },
   { href: LINKS.avatar, label: '頭像商城（舊版）', internal: false },
-  { href: LINKS.board, label: '留言板（舊版）', internal: false },
+  { href: LINKS.board, label: '留言板', internal: false },
 ]
 
 export default function SiteFooter() {

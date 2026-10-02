@@ -60,7 +60,7 @@ export default function SiteHeader() {
           <div className="hidden shrink-0 items-center gap-4 sm:flex">
             <a href={LINKS.member} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white">會員中心<span className="ml-1 text-gold/80">舊版</span></a>
             <a href={LINKS.avatar} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white">頭像商城<span className="ml-1 text-gold/80">舊版</span></a>
-            <a href={LINKS.board} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white">留言板<span className="ml-1 text-gold/80">舊版</span></a>
+            <a href={LINKS.board} target="_blank" rel="noopener noreferrer" className="text-muted hover:text-white">留言板</a>
           </div>
         </div>
       </div>
@@ -127,7 +127,7 @@ export default function SiteHeader() {
             <div className="grid grid-cols-2 gap-2 px-1 pt-1 text-sm">
               <a href={LINKS.member} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-white/5 px-4 py-3 text-gray-300">會員中心 <span className="text-gold/80">舊版</span></a>
               <a href={LINKS.avatar} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-white/5 px-4 py-3 text-gray-300">頭像商城 <span className="text-gold/80">舊版</span></a>
-              <a href={LINKS.board} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-white/5 px-4 py-3 text-gray-300">留言板 <span className="text-gold/80">舊版</span></a>
+              <a href={LINKS.board} target="_blank" rel="noopener noreferrer" className="rounded-xl bg-white/5 px-4 py-3 text-gray-300">留言板</a>
             </div>
             <div className="flex gap-2 px-1 pt-3">
               <a href={LINKS.login} target="_blank" rel="noopener noreferrer" className="btn-outline flex-1 py-2.5 text-sm">登入</a>
